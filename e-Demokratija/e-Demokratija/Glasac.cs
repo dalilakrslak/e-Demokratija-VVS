@@ -18,6 +18,7 @@ namespace e_Demokratija
             this.ime = ime;
             this.prezime = prezime;
             this.datumRodjenja = datumRodjenja;
+            FormirajKodGlasaca();
         }
         public string Ime
         {
