@@ -13,12 +13,11 @@ namespace e_Demokratija
         private DateTime datumRodjenja;
         private string kod;
 
-        public Glasac(String ime, String prezime, DateTime datumRodjenja, String adresa, String brojLicneKarte, string jmbg)
+        public Glasac(String ime, String prezime, DateTime datumRodjenja)
         {
             this.ime = ime;
             this.prezime = prezime;
             this.datumRodjenja = datumRodjenja;
-            FormirajKodGlasaca();
         }
         public string Ime
         {
@@ -26,7 +25,6 @@ namespace e_Demokratija
             set
             {
                 ime = value;
-                FormirajKodGlasaca();
             }
         }
         public string Prezime
@@ -35,7 +33,6 @@ namespace e_Demokratija
             set
             {
                 prezime = value;
-                FormirajKodGlasaca();
             }
         }
         public DateTime DatumRodjenja
@@ -44,7 +41,6 @@ namespace e_Demokratija
             set
             {
                 datumRodjenja = value;
-                FormirajKodGlasaca();
             }
         }
         public string Kod
