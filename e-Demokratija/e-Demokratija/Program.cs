@@ -12,17 +12,18 @@ namespace e_Demokratija
 
             while (true)
             {
-                Console.Clear(); 
+                Console.Clear();
 
-                Console.WriteLine("Dobrodošli na Online Lokalne Izborne Aplikacije");
-                Console.WriteLine("==============================================\n");
+                Console.WriteLine("---------------------------------------");
+                Console.WriteLine("|        Online lokalni izbori        |");
+                Console.WriteLine("---------------------------------------\n");
 
-                Console.WriteLine("Molimo vas da odaberete svoju funkciju:");
-                Console.WriteLine("1. Registracija glasača");
-                Console.WriteLine("2. Glasanje");
-                Console.WriteLine("3. Supervizor");
-                Console.WriteLine("4. Prikaz stanja glasanja");
-                Console.WriteLine("0. Izlaz\n");
+                Console.WriteLine("Molimo Vas da odaberete jedan od sljedećih izbora:");
+                Console.WriteLine(" 1. Registracija glasača");
+                Console.WriteLine(" 2. Glasanje");
+                Console.WriteLine(" 3. Supervizor");
+                Console.WriteLine(" 4. Prikaz stanja glasanja");
+                Console.WriteLine(" 0. Izlaz\n");
 
                 Console.Write("Unesite odgovarajući broj za izbor: ");
                 int izbor = Int32.Parse(Console.ReadLine());
@@ -31,7 +32,7 @@ namespace e_Demokratija
                 {
                     case 1:
                         Console.WriteLine("---------------------------------------");
-                        Console.WriteLine("|         Registracija glasaca         |");
+                        Console.WriteLine("|         Registracija glasaca        |");
                         Console.WriteLine("---------------------------------------\n");
 
                         Console.Write("Unesite ime: ");
@@ -59,14 +60,14 @@ namespace e_Demokratija
 
                         izbori.Glasaci.Add(glasac);
 
-                        Console.WriteLine($"\nPoštovani {glasac.Ime} {glasac.Prezime}, uspješno ste registrovani. \nJEDINSTVENI IDENTIFIKACIONI KOD: {glasac.Kod}\n");
+                        Console.WriteLine($"\nPoštovani/a {glasac.Ime} {glasac.Prezime}, uspješno ste registrovani. \nJEDINSTVENI IDENTIFIKACIONI KOD: {glasac.Kod}\n");
 
 
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
                     case 2:
-                        // Implementacija glasanja
+                
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
