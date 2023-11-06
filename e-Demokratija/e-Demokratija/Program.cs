@@ -28,6 +28,10 @@ namespace e_Demokratija
 
                 switch (izbor)
                 {
+                    case 0:
+                        Console.WriteLine("Hvala Vam!");
+                        Environment.Exit(0);
+                        break;
                     case 1:
                         Console.WriteLine("---------------------------------------");
                         Console.WriteLine("|         Registracija glasaca        |");
@@ -106,9 +110,6 @@ namespace e_Demokratija
                         // Implementacija prikaza stanja glasanja
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
-                        break;
-                    case 0:
-                        Console.WriteLine("Hvala Vam!");
                         break;
                     default:
                         Console.WriteLine("Nevažeći unos. Pritisnite bilo koju tipku za povratak na glavni izbornik.");
