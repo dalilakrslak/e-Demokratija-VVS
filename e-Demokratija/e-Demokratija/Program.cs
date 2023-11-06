@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace e_Demokratija
 {
@@ -67,8 +65,36 @@ namespace e_Demokratija
                         Console.ReadKey();
                         break;
                     case 2:
-                
-                        Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
+                        bool postoji = false;
+                        Glasac g = null;
+                        while (!postoji)
+                        {
+                            Console.Write("\nUnesite vaš JEDINSTVENI IDENTIFIKACIONI KOD: ");
+                            string uneseniKod = Console.ReadLine();
+                            foreach (Glasac glasac1 in izbori.Glasaci)
+                            {
+                                if (uneseniKod.Equals(glasac1.Kod))
+                                {
+                                    postoji = true;
+                                    g = glasac1;
+                                    break;
+                                }
+                            }
+                        }
+                        if (postoji)
+                        {
+                            Console.WriteLine($"\nDobrodošli {g.Ime} {g.Prezime}!");
+                            Console.WriteLine("U nastavku izaberite jednu od opcija za glasanje:");
+                            Console.WriteLine(" a - Glasanje za gradonačelnika");
+                            Console.WriteLine(" b - Glasanje za načelnika");
+                            Console.WriteLine(" c - Glasanje za vijećnika/vijećnike");
+                            Console.WriteLine(" d - Glasanje za stranku\n");
+
+                            Console.Write("Vaš odabir: ");
+                            string unos = Convert.ToString(Console.ReadLine());
+                        }
+                            
+                            Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
                     case 3:
