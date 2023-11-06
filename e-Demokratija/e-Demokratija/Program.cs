@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace e_Demokratija
 {
@@ -37,11 +38,15 @@ namespace e_Demokratija
                         Console.WriteLine("|         Registracija glasaca        |");
                         Console.WriteLine("---------------------------------------\n");
 
+                        Glasac pom = new Glasac();
+
                         Console.Write("Unesite ime: ");
                         string ime = Console.ReadLine();
+                        pom.DaLiJeImeIspravno(ime);
 
                         Console.Write("Unesite prezime: ");
                         string prezime = Console.ReadLine();
+                        pom.DaLiJePrezimeIspravno(prezime);
 
                         Console.Write("Unesite dan rodjenja: ");
                         string danString = Console.ReadLine();
@@ -52,11 +57,13 @@ namespace e_Demokratija
                         Console.Write("Unesite godinu rodjenja: ");
                         string godinaString = Console.ReadLine();
 
+
                         int dan = Int32.Parse(danString);
                         int mjesec = Int32.Parse(mjesecString);
                         int godina = Int32.Parse(godinaString);
 
                         DateTime datumRodjenja = new DateTime(godina, mjesec, dan);
+                        pom.DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
 
                         Glasac glasac = new Glasac(ime, prezime, datumRodjenja);
 

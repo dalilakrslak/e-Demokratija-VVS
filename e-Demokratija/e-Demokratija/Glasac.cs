@@ -14,6 +14,8 @@ namespace e_Demokratija
         private DateTime datumRodjenja;
         private string kod;
 
+        public Glasac() { }
+
         public Glasac(String ime, String prezime, DateTime datumRodjenja)
         {
             DaLiJeImeIspravno(ime);
@@ -57,7 +59,7 @@ namespace e_Demokratija
             }
         }
 
-        private void DaLiJeImeIspravno(string ime) 
+        public void DaLiJeImeIspravno(string ime) 
         {
             if (ime.Length == 0)
                 throw new ArgumentException("Ime ne može biti prazna riječ!");
@@ -89,18 +91,18 @@ namespace e_Demokratija
                 throw new ArgumentOutOfRangeException("Upisano ime nije validno!");
         }
 
-        private void DaLiJePrezimeIspravno(string prezime)
+        public void DaLiJePrezimeIspravno(string prezime)
         {
-            if (ime.Length == 0)
+            if (prezime.Length == 0)
                 throw new ArgumentException("Prezime ne može biti prazna riječ!");
 
-            if (ime == null)
+            if (prezime == null)
                 throw new ArgumentNullException("Glasač mora imati prezime - prezime ne smije biti NULL!");
 
             bool samoCrtice = true;
             int brojCrtica = 0;
 
-            foreach (char c in ime.ToCharArray())
+            foreach (char c in prezime.ToCharArray())
             {
                 if (!Char.IsLetter(c))
                 {
@@ -117,17 +119,16 @@ namespace e_Demokratija
                 }
             }
 
-            if (ime.Length < 3 || ime.Length > 20 || !samoCrtice || brojCrtica > 1)
+            if (prezime.Length < 3 || prezime.Length > 20 || !samoCrtice || brojCrtica > 1)
                 throw new ArgumentOutOfRangeException("Upisano prezime nije validno!");
         }
 
-        private void DaLiJeDatumaRodjenjaIspravan(DateTime datum)
+        public void DaLiJeDatumaRodjenjaIspravan(DateTime datum)
         {
             if (datum > DateTime.Now)
                 throw new ArgumentOutOfRangeException("Datum rođenja ne može biti veći od današnjeg datuma!");
 
-            int godine = DateTime.Now.Year - datumRodjenja.Year;
-            if (DateTime.Now.Year - datum.Year < 18 || (DateTime.Now.Year - datumRodjenja.Year == 18 && DateTime.Now.Date < datum.AddYears(18).Date))
+            if(DateTime.Now.Date < datum.AddYears(18))
             {
                 throw new ArgumentOutOfRangeException("Glasač nije punoljetan!");
             }
