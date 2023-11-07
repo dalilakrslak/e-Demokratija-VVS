@@ -31,6 +31,7 @@ namespace e_Demokratija
             get => ime;
             set
             {
+                DaLiJeImeIspravno(ime);
                 ime = value;
             }
         }
@@ -39,6 +40,7 @@ namespace e_Demokratija
             get => prezime;
             set
             {
+                DaLiJePrezimeIspravno(prezime);
                 prezime = value;
             }
         }
@@ -47,6 +49,7 @@ namespace e_Demokratija
             get => datumRodjenja;
             set
             {
+                DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
                 datumRodjenja = value;
             }
         }
