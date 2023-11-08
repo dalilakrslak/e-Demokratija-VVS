@@ -14,3 +14,5 @@ C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\D
 C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.pdb
 C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.genruntimeconfig.cache
 C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\ref\e-Demokratija.dll
+C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\CsvHelper.dll
+C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.csproj.CopyComplete

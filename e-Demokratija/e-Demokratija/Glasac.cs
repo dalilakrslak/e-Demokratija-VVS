@@ -13,16 +13,19 @@ namespace e_Demokratija
         private string prezime;
         private DateTime datumRodjenja;
         private string kod;
+        private bool daLiJeGlasaoZaGradonacelnika = false;
+        private bool daLiJeGlasaoZaNacelnika = false;
+        private bool daLiJeGlasaoZaVijecnika = false;
 
         public Glasac() { }
 
         public Glasac(String ime, String prezime, DateTime datumRodjenja)
         {
-            DaLiJeImeIspravno(ime);
+            //DaLiJeImeIspravno(ime);
             this.ime = ime;
-            DaLiJePrezimeIspravno(prezime);
+            //DaLiJePrezimeIspravno(prezime);
             this.prezime = prezime;
-            DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
+            //DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
             this.datumRodjenja = datumRodjenja;
             FormirajKodGlasaca();
         }
@@ -31,7 +34,7 @@ namespace e_Demokratija
             get => ime;
             set
             {
-                DaLiJeImeIspravno(ime);
+                //DaLiJeImeIspravno(ime);
                 ime = value;
             }
         }
@@ -40,7 +43,7 @@ namespace e_Demokratija
             get => prezime;
             set
             {
-                DaLiJePrezimeIspravno(prezime);
+                //DaLiJePrezimeIspravno(prezime);
                 prezime = value;
             }
         }
@@ -49,7 +52,7 @@ namespace e_Demokratija
             get => datumRodjenja;
             set
             {
-                DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
+                //DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
                 datumRodjenja = value;
             }
         }
@@ -60,6 +63,21 @@ namespace e_Demokratija
             {
                 kod = value.ToLower();
             }
+        }
+        public bool DaLiJeGlasaoZaGradonacelnika
+        {
+            get => daLiJeGlasaoZaGradonacelnika;
+            set => daLiJeGlasaoZaGradonacelnika = value;
+        }
+        public bool DaLiJeGlasaoZaNacelnika
+        {
+            get => daLiJeGlasaoZaNacelnika;
+            set => daLiJeGlasaoZaNacelnika = value;
+        }
+        public bool DaLiJeGlasaoZaVijecnika
+        {
+            get => daLiJeGlasaoZaVijecnika;
+            set => daLiJeGlasaoZaVijecnika = value;
         }
 
         public void DaLiJeImeIspravno(string ime) 
