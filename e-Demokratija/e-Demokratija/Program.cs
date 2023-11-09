@@ -9,10 +9,11 @@ namespace e_Demokratija
     {
         static void Main(string[] args)
         {
-            Izbori izbori = new Izbori();
-            izbori.KreirajIzbore();
             CSVMaker csvMaker = new CSVMaker();
             var glasaci = csvMaker.CitajGlasaceIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasaci.csv"));
+            var stranke = csvMaker.CitajStrankeIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "stranke.csv"));
+            var kandidati = csvMaker.CitajKandidateIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "kandidati.csv"));
+            Supervizor supervizor = new Supervizor();
             while (true)
             {
                 Console.Clear();
@@ -42,15 +43,11 @@ namespace e_Demokratija
                         Console.WriteLine("|         Registracija glasaca        |");
                         Console.WriteLine("---------------------------------------\n");
 
-                        Glasac pom = new Glasac();
-
                         Console.Write("Unesite ime: ");
                         string ime = Console.ReadLine();
-                        //pom.DaLiJeImeIspravno(ime);
 
                         Console.Write("Unesite prezime: ");
                         string prezime = Console.ReadLine();
-                        //pom.DaLiJePrezimeIspravno(prezime);
 
                         Console.Write("Unesite dan rodjenja: ");
                         string danString = Console.ReadLine();
@@ -61,13 +58,11 @@ namespace e_Demokratija
                         Console.Write("Unesite godinu rodjenja: ");
                         string godinaString = Console.ReadLine();
 
-
                         int dan = Int32.Parse(danString);
                         int mjesec = Int32.Parse(mjesecString);
                         int godina = Int32.Parse(godinaString);
 
                         DateTime datumRodjenja = new DateTime(godina, mjesec, dan);
-                        //pom.DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
 
                         Glasac glasac = new Glasac(ime, prezime, datumRodjenja);
                         csvMaker.DodajGlasaca(glasac);
@@ -77,7 +72,7 @@ namespace e_Demokratija
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
-                    case 2:
+                    /*case 2:
                         Console.WriteLine("\n---------------------------------------");
                         Console.WriteLine("|               Glasanje              |");
                         Console.WriteLine("---------------------------------------\n");
@@ -238,9 +233,46 @@ namespace e_Demokratija
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
+                    */
                     case 3:
-                        // Implementacija supervizora
-                        Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
+                        int unosSupervizora = -1;
+                        Console.Write("\nDobrodošli! Molimo vas da potvrdite svoj identitet unosom vaše lozinke: ");
+                        if (Console.ReadLine() == "admin")
+                        {
+                            Console.WriteLine("\nVi ste supervizor! Molimo izaberite jednu od sljedećih opcija:");
+                            Console.WriteLine("1 - Dodavanje kandidata");
+                            Console.WriteLine("2 - Brisanje kandidata");
+                            Console.WriteLine("3 - Dodavanje stranke");
+                            Console.WriteLine("4 - Izmjena stranke");
+                            Console.WriteLine("5 - Brisanje stranke");
+                            Console.Write("Unesite odgovarajući broj za izbor: ");
+                            unosSupervizora = Int32.Parse(Console.ReadLine());
+                            if(unosSupervizora == 1)
+                            {
+                                supervizor.DodajKandidata(csvMaker, stranke, kandidati);
+                            }
+                            else if (unosSupervizora == 2)
+                            {
+                                supervizor.IzbrisiKandidata(csvMaker, kandidati);
+                            }
+                            else if (unosSupervizora == 3)
+                            {
+                                supervizor.DodajStranku(csvMaker, stranke);
+                            }
+                            else if (unosSupervizora == 4)
+                            {
+                                supervizor.IzmijeniStranku(csvMaker, stranke); 
+                            }
+                            else if (unosSupervizora == 5)
+                            {
+                                supervizor.IzbrisiStranku(csvMaker, stranke);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Pogresna sifra! Pokusajte ponovo!");
+                        }
+                        Console.WriteLine("\nPritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
                     case 4:
