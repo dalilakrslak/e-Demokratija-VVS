@@ -13,6 +13,7 @@ namespace e_Demokratija
             var glasaci = csvMaker.CitajGlasaceIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasaci.csv"));
             var stranke = csvMaker.CitajStrankeIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "stranke.csv"));
             var kandidati = csvMaker.CitajKandidateIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "kandidati.csv"));
+            var glasovi = csvMaker.CitajGlasoveIzCSV(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasovi.csv"));
             Supervizor supervizor = new Supervizor();
             while (true)
             {
@@ -72,7 +73,7 @@ namespace e_Demokratija
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
-                    /*case 2:
+                    case 2:
                         Console.WriteLine("\n---------------------------------------");
                         Console.WriteLine("|               Glasanje              |");
                         Console.WriteLine("---------------------------------------\n");
@@ -108,7 +109,7 @@ namespace e_Demokratija
                                 if (trenutniGlasac.DaLiJeGlasaoZaGradonacelnika == false)
                                 {
                                     Console.WriteLine("\nKandidati za gradonacelnika su: \n");
-                                    foreach (Kandidat gradonacelnik in izbori.Kandidati)
+                                    foreach (Kandidat gradonacelnik in kandidati)
                                     {
                                         if (gradonacelnik.Pozicija.ToString().Equals("gradonacelnik"))
                                         {
@@ -120,12 +121,15 @@ namespace e_Demokratija
                                     }
                                     Console.Write("\nVaš glas je za gradonačelnika pod rednim brojem: ");
                                     int redniBrojGradonacelnika = Int32.Parse(Console.ReadLine());
-                                    foreach (Kandidat k in izbori.Kandidati)
+                                    foreach (Kandidat k in kandidati)
                                     {
                                         if (k.RedniBroj == redniBrojGradonacelnika)
                                         {
                                             trenutniGlasac.DaLiJeGlasaoZaGradonacelnika = true;
-                                            izbori.Glasovi.Add(new Glas(trenutniGlasac, k, DateTime.Now));
+                                            Glas glas = new Glas(trenutniGlasac, k);
+                                            csvMaker.DodajGlas(glas);
+                                            k.BrojGlasova++;
+                                            csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             break;
                                         }
                                     }
@@ -138,7 +142,7 @@ namespace e_Demokratija
                                 if (trenutniGlasac.DaLiJeGlasaoZaNacelnika == false)
                                 {
                                     Console.WriteLine("\nKandidati za načelnika su: \n");
-                                    foreach (Kandidat nacelnik in izbori.Kandidati)
+                                    foreach (Kandidat nacelnik in kandidati)
                                     {
                                         if (nacelnik.Pozicija.ToString().Equals("nacelnik"))
                                         {
@@ -150,12 +154,15 @@ namespace e_Demokratija
                                     }
                                     Console.Write("\nVaš glas je za načelnika pod rednim brojem: ");
                                     int redniBrojNacelnika = Int32.Parse(Console.ReadLine());
-                                    foreach (Kandidat k in izbori.Kandidati)
+                                    foreach (Kandidat k in kandidati)
                                     {
                                         if (k.RedniBroj == redniBrojNacelnika)
                                         {
                                             trenutniGlasac.DaLiJeGlasaoZaNacelnika = true;
-                                            izbori.Glasovi.Add(new Glas(trenutniGlasac, k, DateTime.Now));
+                                            Glas glas = new Glas(trenutniGlasac, k);
+                                            csvMaker.DodajGlas(glas);
+                                            k.BrojGlasova++;
+                                            csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             break;
                                         }
                                     }
@@ -168,7 +175,7 @@ namespace e_Demokratija
                                 if (trenutniGlasac.DaLiJeGlasaoZaVijecnika == false)
                                 {
                                     Console.WriteLine("\nKandidati za vijecnika su: \n");
-                                    foreach (Kandidat vijecnik in izbori.Kandidati)
+                                    foreach (Kandidat vijecnik in kandidati)
                                     {
                                         if (vijecnik.Pozicija.ToString().Equals("vijecnik"))
                                         {
@@ -180,18 +187,21 @@ namespace e_Demokratija
                                     }
                                     Console.Write("\nVaš glas je za vijecnika pod rednim brojem: ");
                                     int redniBrojVijecnika = Int32.Parse(Console.ReadLine());
-                                    foreach (Kandidat k in izbori.Kandidati)
+                                    foreach (Kandidat k in kandidati)
                                     {
                                         if (k.RedniBroj == redniBrojVijecnika)
                                         {
                                             trenutniGlasac.DaLiJeGlasaoZaVijecnika = true;
-                                            izbori.Glasovi.Add(new Glas(trenutniGlasac, k, DateTime.Now));
+                                            Glas glas = new Glas(trenutniGlasac, k);
+                                            csvMaker.DodajGlas(glas);
+                                            k.BrojGlasova++;
+                                            csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             break;
                                         }
                                     }
                                 }
                                 else
-                                    Console.WriteLine("Vec ste glasali za gradonacelnika!");
+                                    Console.WriteLine("Vec ste glasali za vijecnika!");
                             }
                             else if (unos == "d")
                             {
@@ -203,12 +213,13 @@ namespace e_Demokratija
                                     while (!provjera)
                                     {
                                         Console.WriteLine("Unesite naziv stranke: ");
-                                        foreach (Stranka s in izbori.Stranke)
+                                        foreach (Stranka s in stranke)
                                         {
                                             if (s.Naziv.Equals(nazivStranke))
                                             {
                                                 provjera = true;
                                                 s.BrojGlasova++;
+                                                csvMaker.AzurirajStrankeIzCSV(stranke);
                                                 break;
                                             }
                                         }
@@ -217,10 +228,13 @@ namespace e_Demokratija
                                     }
                                     if (provjera)
                                     {
-                                        foreach (Kandidat k in izbori.Kandidati)
+                                        foreach (Kandidat k in kandidati)
                                         {
                                             if (k.Stranka.Naziv.Equals(nazivStranke))
+                                            {
                                                 k.BrojGlasova++;
+                                                csvMaker.AzurirajKandidateIzCSV(kandidati);
+                                            }
                                         }
                                     }
                                 }
@@ -233,7 +247,6 @@ namespace e_Demokratija
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
-                    */
                     case 3:
                         int unosSupervizora = -1;
                         Console.Write("\nDobrodošli! Molimo vas da potvrdite svoj identitet unosom vaše lozinke: ");

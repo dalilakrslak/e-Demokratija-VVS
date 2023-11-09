@@ -11,7 +11,7 @@ namespace e_Demokratija
         private Glasac glasac;
         private Kandidat kandidat;
 
-        public Glas(Glasac glasac, Kandidat kandidat, DateTime datumGlasanja)
+        public Glas(Glasac glasac, Kandidat kandidat)
         {
             this.glasac = glasac;
             this.kandidat = kandidat;

@@ -14,7 +14,7 @@ namespace e_Demokratija
         private List<Glasac> glasaci = new List<Glasac>();
         private List<Stranka> stranke = new List<Stranka>();
         private List<Kandidat> kandidati = new List<Kandidat>();
-
+        private List<Glas> glasovi = new List<Glas>();
         public CSVMaker()
         {
             var putanjaGlasaci = Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasaci.csv");
@@ -70,6 +70,15 @@ namespace e_Demokratija
                 return kandidati;
             }
         }
+        public List<Glas> CitajGlasoveIzCSV(string putanjaDoCSV)
+        {
+            using (var reader = new StreamReader(putanjaDoCSV))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                glasovi = csv.GetRecords<Glas>().ToList();
+                return glasovi;
+            }
+        }
 
         public void DodajGlasaca(Glasac noviGlasac)
         {
@@ -96,6 +105,15 @@ namespace e_Demokratija
             using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
                 csv.WriteRecords(kandidati);
+            }
+        }
+        public void DodajGlas(Glas noviGlas)
+        {
+            glasovi.Add(noviGlas);
+            using (var writer = new StreamWriter(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasovi.csv")))
+            using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                csv.WriteRecords(glasovi);
             }
         }
         public void AzurirajStrankeIzCSV(List<Stranka> stranke)
