@@ -130,6 +130,7 @@ namespace e_Demokratija
                                             csvMaker.DodajGlas(glas);
                                             k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
+                                            csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
                                         }
                                     }
@@ -163,6 +164,7 @@ namespace e_Demokratija
                                             csvMaker.DodajGlas(glas);
                                             k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
+                                            csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
                                         }
                                     }
@@ -196,6 +198,7 @@ namespace e_Demokratija
                                             csvMaker.DodajGlas(glas);
                                             k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
+                                            csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
                                         }
                                     }
@@ -289,7 +292,25 @@ namespace e_Demokratija
                         Console.ReadKey();
                         break;
                     case 4:
-                        // Implementacija prikaza stanja glasanja
+                        Console.Write("Ukupno je registrovano " + glasaci.Count + " glasaca.\n");
+                        int brojacZaGradonacelnika = 0, brojacZaNacelnika = 0, brojacZaVijecnike = 0, brojacZaStranke = 0;
+                        foreach (Glasac g in glasaci)
+                        {
+                            if (g.DaLiJeGlasaoZaGradonacelnika)
+                                brojacZaGradonacelnika++;
+                            if (g.DaLiJeGlasaoZaNacelnika)
+                                brojacZaNacelnika++;
+                            if (g.DaLiJeGlasaoZaVijecnika)
+                                brojacZaVijecnike++;
+                        }
+
+                        foreach (Stranka s in stranke)
+                        {
+                            brojacZaStranke += s.BrojGlasova;
+                        }
+                        Console.WriteLine("Od ukupno " + glasaci.Count + " glasalo je " + brojacZaGradonacelnika + " za gradonacelnika, " + brojacZaNacelnika + " za nacelnika, " + brojacZaVijecnike + " za vijecnike i " + brojacZaStranke + " za stranke generalno.\n");
+                        kandidati.Sort((kandidat1, kandidat2) => kandidat1.BrojGlasova.CompareTo(kandidat2.BrojGlasova));
+                        //ispis glasanja -> nakon dodanih kandidata i glasova
                         Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;

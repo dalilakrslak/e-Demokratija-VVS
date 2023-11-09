@@ -116,6 +116,17 @@ namespace e_Demokratija
                 csv.WriteRecords(glasovi);
             }
         }
+        public void AzurirajGlasaceIzCSV(List<Glasac> glasaci)
+        {
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
+            csvConfig.HasHeaderRecord = true;
+
+            using (var writer = new StreamWriter(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasaci.csv")))
+            using (var csv = new CsvWriter(writer, csvConfig))
+            {
+                csv.WriteRecords(glasaci);
+            }
+        }
         public void AzurirajStrankeIzCSV(List<Stranka> stranke)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
