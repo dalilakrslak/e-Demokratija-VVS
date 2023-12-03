@@ -84,7 +84,7 @@ namespace e_Demokratija
                         Console.WriteLine("---------------------------------------\n");
                         bool registrovanGlasac = false;
                         Glasac trenutniGlasac = null;
-                        while (!registrovanGlasac)
+                        while (registrovanGlasac)
                         {
                             Console.Write("\nUnesite vaš JEDINSTVENI IDENTIFIKACIONI KOD: ");
                             string uneseniKod = Console.ReadLine();
@@ -133,7 +133,6 @@ namespace e_Demokratija
                                             trenutniGlasac.DaLiJeGlasaoZaGradonacelnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
-                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -167,7 +166,6 @@ namespace e_Demokratija
                                             trenutniGlasac.DaLiJeGlasaoZaNacelnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
-                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -201,7 +199,6 @@ namespace e_Demokratija
                                             trenutniGlasac.DaLiJeGlasaoZaVijecnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
-                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -226,7 +223,6 @@ namespace e_Demokratija
                                             if (s.Naziv.Equals(nazivStranke))
                                             {
                                                 provjera = true;
-                                                s.BrojGlasova++;
                                                 csvMaker.AzurirajStrankeIzCSV(stranke);
                                                 break;
                                             }
@@ -240,7 +236,6 @@ namespace e_Demokratija
                                         {
                                             if (k.Stranka.Naziv.Equals(nazivStranke))
                                             {
-                                                k.BrojGlasova++;
                                                 csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             }
                                         }
@@ -274,11 +269,11 @@ namespace e_Demokratija
                             }
                             else if (unosSupervizora == 2)
                             {
-                                supervizor.IzbrisiKandidata(csvMaker, kandidati);
+                                supervizor.DodajStranku(csvMaker, stranke);
                             }
                             else if (unosSupervizora == 3)
                             {
-                                supervizor.DodajStranku(csvMaker, stranke);
+                                supervizor.IzbrisiKandidata(csvMaker, kandidati);
                             }
                             else if (unosSupervizora == 4)
                             {
@@ -298,7 +293,7 @@ namespace e_Demokratija
                         break;
                     case 4:
                         Console.Write("\nUkupno je registrovano " + glasaci.Count + " glasaca.\n");
-                        int brojacZaGradonacelnika = 0, brojacZaNacelnika = 0, brojacZaVijecnike = 0, brojacZaStranke = 0;
+                        int brojacZaGradonacelnika = 1, brojacZaNacelnika = 1, brojacZaVijecnike = 1, brojacZaStranke = 1;
                         foreach (Glasac g in glasaci)
                         {
                             if (g.DaLiJeGlasaoZaGradonacelnika)
