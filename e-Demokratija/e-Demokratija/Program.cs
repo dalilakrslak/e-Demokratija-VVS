@@ -44,11 +44,15 @@ namespace e_Demokratija
                         Console.WriteLine("|         Registracija glasaca        |");
                         Console.WriteLine("---------------------------------------\n");
 
+                        Glasac glasac = new Glasac();
+
                         Console.Write("Unesite ime: ");
                         string ime = Console.ReadLine();
+                        glasac.DaLiJeImeIspravno(ime);
 
                         Console.Write("Unesite prezime: ");
                         string prezime = Console.ReadLine();
+                        glasac.DaLiJePrezimeIspravno(prezime);
 
                         Console.Write("Unesite dan rodjenja: ");
                         string danString = Console.ReadLine();
@@ -64,8 +68,9 @@ namespace e_Demokratija
                         int godina = Int32.Parse(godinaString);
 
                         DateTime datumRodjenja = new DateTime(godina, mjesec, dan);
+                        glasac.DaLiJeDatumaRodjenjaIspravan(datumRodjenja);
 
-                        Glasac glasac = new Glasac(ime, prezime, datumRodjenja);
+                        glasac = new Glasac(ime, prezime, datumRodjenja);
                         csvMaker.DodajGlasaca(glasac);
 
                         Console.WriteLine($"\nPoštovani/a {glasac.Ime} {glasac.Prezime}, uspješno ste registrovani. \nJEDINSTVENI IDENTIFIKACIONI KOD: {glasac.Kod}\n");
@@ -102,7 +107,7 @@ namespace e_Demokratija
                             Console.WriteLine(" c - Glasanje za vijećnika/vijećnike");
                             Console.WriteLine(" d - Glasanje za stranku\n");
 
-                            Console.Write("Vaš odabir: ");
+                            Console.Write("Unesite odgovarajuće slovo za izbor: ");
                             string unos = Convert.ToString(Console.ReadLine());
                             if (unos == "a")
                             {
@@ -136,7 +141,7 @@ namespace e_Demokratija
                                     }
                                 }
                                 else
-                                    Console.WriteLine("Vec ste glasali za gradonacelnika!");
+                                    Console.WriteLine("\nVec ste glasali za gradonacelnika!");
                             }
                             else if (unos == "b")
                             {
@@ -170,7 +175,7 @@ namespace e_Demokratija
                                     }
                                 }
                                 else
-                                    Console.WriteLine("Vec ste glasali za nacelnika!");
+                                    Console.WriteLine("\nVec ste glasali za nacelnika!");
                             }
                             else if (unos == "c")
                             {
@@ -204,13 +209,13 @@ namespace e_Demokratija
                                     }
                                 }
                                 else
-                                    Console.WriteLine("Vec ste glasali za vijecnika!");
+                                    Console.WriteLine("\nVec ste glasali za vijecnika!");
                             }
                             else if (unos == "d")
                             {
                                 if (trenutniGlasac.DaLiJeGlasaoZaVijecnika == false)
                                 {
-                                    Console.Write("Unesite naziv stranke: ");
+                                    Console.Write("\nUnesite naziv stranke: ");
                                     string nazivStranke = Console.ReadLine();
                                     bool provjera = false;
                                     while (!provjera)
@@ -227,7 +232,7 @@ namespace e_Demokratija
                                             }
                                         }
                                         if (!provjera)
-                                            Console.WriteLine("Unijeli ste nepostojecu stranku. Pokusajte ponovo!");
+                                            Console.WriteLine("\nUnijeli ste nepostojecu stranku. Pokusajte ponovo!");
                                     }
                                     if (provjera)
                                     {
@@ -243,11 +248,11 @@ namespace e_Demokratija
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Ne moze se glasati za stranku ukoliko ste vec glasali za vijecnike!");
+                                    Console.WriteLine("\nNe moze se glasati za stranku ukoliko ste vec glasali za vijecnike!");
                                 }
                             }
                         }
-                        Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
+                        Console.WriteLine("\nPritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
                     case 3:
@@ -260,7 +265,7 @@ namespace e_Demokratija
                             Console.WriteLine("2 - Brisanje kandidata");
                             Console.WriteLine("3 - Dodavanje stranke");
                             Console.WriteLine("4 - Izmjena stranke");
-                            Console.WriteLine("5 - Brisanje stranke");
+                            Console.WriteLine("5 - Brisanje stranke\n");
                             Console.Write("Unesite odgovarajući broj za izbor: ");
                             unosSupervizora = Int32.Parse(Console.ReadLine());
                             if(unosSupervizora == 1)
@@ -286,13 +291,13 @@ namespace e_Demokratija
                         }
                         else
                         {
-                            Console.WriteLine("Pogresna sifra! Pokusajte ponovo!");
+                            Console.WriteLine("\nPogresna sifra! Pokusajte ponovo!");
                         }
                         Console.WriteLine("\nPritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
                     case 4:
-                        Console.Write("Ukupno je registrovano " + glasaci.Count + " glasaca.\n");
+                        Console.Write("\nUkupno je registrovano " + glasaci.Count + " glasaca.\n");
                         int brojacZaGradonacelnika = 0, brojacZaNacelnika = 0, brojacZaVijecnike = 0, brojacZaStranke = 0;
                         foreach (Glasac g in glasaci)
                         {

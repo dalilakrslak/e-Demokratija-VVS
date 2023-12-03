@@ -1,3 +1,5 @@
 Ime,Prezime,DatumRodjenja,Kod,DaLiJeGlasaoZaGradonacelnika,DaLiJeGlasaoZaNacelnika,DaLiJeGlasaoZaVijecnika
 Aida,Krslak,11/28/1969 00:00:00,akrslak281169,False,False,False
 Dalila,Krslak,11/23/2001 00:00:00,dkrslak231101,True,False,False
+Nejra,Adilovic,10/10/2002 00:00:00,nadilovic101002,True,False,False
+Niko,Nikic,05/17/1987 00:00:00,nnikic170587,False,False,False
