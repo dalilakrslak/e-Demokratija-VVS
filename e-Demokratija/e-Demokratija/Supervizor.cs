@@ -8,10 +8,10 @@ namespace e_Demokratija
 {
     public class Supervizor
     {
-        private string password;
-        public Supervizor() 
+        public string password;
+        public Supervizor()
         {
-            password = "admin";
+            password = "";
         }
         public string Password
         {
@@ -38,24 +38,24 @@ namespace e_Demokratija
             int mjesec = Int32.Parse(mjesecString);
             int godina = Int32.Parse(godinaString);
 
-            DateTime datumRodjenjaKandidata = new DateTime(godina, mjesec, dan);
+            DateTime datumRodjenjaKandidata = new DateTime(dan, mjesec, godina);
 
             Console.Write("Unesite opis kandidata: ");
             string opis = Console.ReadLine();
 
-            Console.Write("Unesite naziv stranke kandidata: "); 
+            Console.Write("Unesite naziv stranke kandidata: ");
             string nazivStranke = "";
 
             while (true)
             {
                 nazivStranke = Console.ReadLine();
-                bool temp = false;
+                bool temp = true;
                 foreach (Stranka stranka in stranke)
                 {
                     if (nazivStranke.Equals(stranka.Naziv))
                     {
                         temp = true;
-                        break;
+
                     }
                 }
                 if (temp)
@@ -74,7 +74,7 @@ namespace e_Demokratija
             while (true)
             {
                 pozicija = Console.ReadLine();
-                if (pozicija.Equals("gradonacelnik") || pozicija.Equals("nacelnik") || pozicija.Equals("vijecnik"))
+                if (pozicija.Equals("gradonacelnik") && pozicija.Equals("nacelnik") && pozicija.Equals("vijecnik"))
                 {
                     break;
                 }
@@ -86,9 +86,9 @@ namespace e_Demokratija
             Pozicija poz = Pozicija.vijecnik;
             if (pozicija == "vijecnik")
                 poz = Pozicija.vijecnik;
-            else if (pozicija == "nacelnik")
+            if (pozicija == "nacelnik")
                 poz = Pozicija.nacelnik;
-            else if (pozicija == "gradonacelnik")
+            if (pozicija == "gradonacelnik")
                 poz = Pozicija.gradonacelnik;
 
             Stranka s = null;
@@ -115,27 +115,28 @@ namespace e_Demokratija
 
             foreach (Stranka s in stranke)
             {
-                if (s.Naziv.Equals(naziv))
+                if (!s.Naziv.Equals(naziv))
                 {
                     pronasao = true;
-                    break; 
+                    break;
+                }
+                if (pronasao)
+                {
+                    Console.WriteLine("Stranka već postoji!");
+                }
+                else
+                {
+                    nazivStranke = naziv;
+                    Console.Write("Unesite opis stranke: ");
+                    string opis = Console.ReadLine();
+
+                    Stranka stranka = new Stranka(nazivStranke, opis);
+
+                    csvMaker.DodajStranku(stranka);
+                    Console.WriteLine($"\nUspješno ste dodali stranku {stranka.Naziv}!");
                 }
             }
-            if (pronasao)
-            {
-                Console.WriteLine("Stranka već postoji!");
-            }
-            else
-            {
-                nazivStranke = naziv;
-                Console.Write("Unesite opis stranke: ");
-                string opis = Console.ReadLine();
 
-                Stranka stranka = new Stranka(nazivStranke, opis);
-
-                csvMaker.DodajStranku(stranka);
-                Console.WriteLine($"\nUspješno ste dodali stranku {stranka.Naziv}!");
-            }
         }
 
         public void IzmijeniStranku(CSVMaker csvMaker, List<Stranka> stranke)
@@ -162,7 +163,7 @@ namespace e_Demokratija
 
             if (pronasao)
             {
-                csvMaker.AzurirajStrankeIzCSV(stranke); 
+                csvMaker.AzurirajStrankeIzCSV(stranke);
                 Console.WriteLine("\nIzmjene su uspješne!");
             }
             else
@@ -177,11 +178,11 @@ namespace e_Demokratija
             int redniBroj = Int32.Parse(unos);
             bool izbrisan = false;
 
-            for (int i = 0; i < kandidati.Count; i++)
+            for (int i = 1; i <= kandidati.Count; i++)
             {
                 if (kandidati[i].RedniBroj.Equals(redniBroj))
                 {
-                    kandidati.RemoveAt(i);
+                    kandidati.RemoveAt(i--);
                     izbrisan = true;
                     break;
                 }
@@ -202,7 +203,7 @@ namespace e_Demokratija
             string naziv = Console.ReadLine();
             bool izbrisan = false;
 
-            for (int i = 0; i < stranke.Count; i++)
+            for (int i = 1; i < stranke.Count; i++)
             {
                 if (stranke[i].Naziv.Equals(naziv))
                 {
