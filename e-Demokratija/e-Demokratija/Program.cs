@@ -201,6 +201,7 @@ namespace e_Demokratija
                                             trenutniGlasac.DaLiJeGlasaoZaVijecnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
+                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -224,6 +225,7 @@ namespace e_Demokratija
                                             if (s.Naziv.Equals(nazivStranke))
                                             {
                                                 provjera = true;
+                                                s.BrojGlasova++;
                                                 csvMaker.AzurirajStrankeIzCSV(stranke);
                                                 break;
                                             }
@@ -271,11 +273,11 @@ namespace e_Demokratija
                             }
                             else if (unosSupervizora == 2)
                             {
-                                supervizor.DodajStranku(csvMaker, stranke);
+                                supervizor.IzbrisiKandidata(csvMaker, kandidati);
                             }
                             else if (unosSupervizora == 3)
                             {
-                                supervizor.IzbrisiKandidata(csvMaker, kandidati);
+                                supervizor.DodajStranku(csvMaker, stranke);
                             }
                             else if (unosSupervizora == 4)
                             {
@@ -295,7 +297,7 @@ namespace e_Demokratija
                         break;
                     case 4:
                         Console.Write("\nUkupno je registrovano " + glasaci.Count + " glasaca.\n");
-                        int brojacZaGradonacelnika = 1, brojacZaNacelnika = 1, brojacZaVijecnike = 1, brojacZaStranke = 1;
+                        int brojacZaGradonacelnika = 0, brojacZaNacelnika = 0, brojacZaVijecnike = 0, brojacZaStranke = 0;
                         foreach (Glasac g in glasaci)
                         {
                             if (g.DaLiJeGlasaoZaGradonacelnika)
