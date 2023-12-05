@@ -84,7 +84,7 @@ namespace e_Demokratija
                         Console.WriteLine("---------------------------------------\n");
                         bool registrovanGlasac = false;
                         Glasac trenutniGlasac = null;
-                        while (registrovanGlasac)
+                        while (!registrovanGlasac)
                         {
                             Console.Write("\nUnesite vaš JEDINSTVENI IDENTIFIKACIONI KOD: ");
                             string uneseniKod = Console.ReadLine();
@@ -133,6 +133,7 @@ namespace e_Demokratija
                                             trenutniGlasac.DaLiJeGlasaoZaGradonacelnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
+                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -166,6 +167,7 @@ namespace e_Demokratija
                                             trenutniGlasac.DaLiJeGlasaoZaNacelnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
+                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -217,7 +219,6 @@ namespace e_Demokratija
                                     bool provjera = false;
                                     while (!provjera)
                                     {
-                                        Console.WriteLine("Unesite naziv stranke: ");
                                         foreach (Stranka s in stranke)
                                         {
                                             if (s.Naziv.Equals(nazivStranke))
@@ -236,6 +237,7 @@ namespace e_Demokratija
                                         {
                                             if (k.Stranka.Naziv.Equals(nazivStranke))
                                             {
+                                                k.BrojGlasova++;
                                                 csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             }
                                         }

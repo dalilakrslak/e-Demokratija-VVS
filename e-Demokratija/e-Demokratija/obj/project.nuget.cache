@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "s7Hskt6CAzMw5OiFc2QxQ1ps55JgxHRwsa34zK5LlKDJE6dgolBGcRqDmQYdUNjh10y4Bw6bFcmm0FN+FVaGHQ==",
+  "dgSpecHash": "hzn7cf1waLaiV8VM4iLSGRVrmnrMydzasz7I4QNojpb71MRlW9ZgcNLmiV5XLaD/j9Yquo0dgSblnrzoeUg91w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+  "projectFilePath": "C:\\Users\\Vildana\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\29\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+    "C:\\Users\\Vildana\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\Vildana\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Vildana\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Vildana\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Vildana\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

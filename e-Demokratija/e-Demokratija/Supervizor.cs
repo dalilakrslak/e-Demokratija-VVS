@@ -120,6 +120,7 @@ namespace e_Demokratija
                     pronasao = true;
                     break;
                 }
+
                 if (pronasao)
                 {
                     Console.WriteLine("Stranka već postoji!");
