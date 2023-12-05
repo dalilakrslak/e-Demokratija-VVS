@@ -8,7 +8,7 @@ namespace e_Demokratija
 {
     public class Supervizor
     {
-        public string password;
+        private string password;
         public Supervizor()
         {
             password = "admin";
@@ -38,7 +38,7 @@ namespace e_Demokratija
             int mjesec = Int32.Parse(mjesecString);
             int godina = Int32.Parse(godinaString);
 
-            DateTime datumRodjenjaKandidata = new DateTime(dan, mjesec, godina);
+            DateTime datumRodjenjaKandidata = new DateTime(godina, mjesec, dan);
 
             Console.Write("Unesite opis kandidata: ");
             string opis = Console.ReadLine();
@@ -55,6 +55,7 @@ namespace e_Demokratija
                     if (nazivStranke.Equals(stranka.Naziv))
                     {
                         temp = true;
+                        break;
 
                     }
                 }
@@ -115,7 +116,7 @@ namespace e_Demokratija
 
             foreach (Stranka s in stranke)
             {
-                if (!s.Naziv.Equals(naziv))
+                if (s.Naziv.Equals(naziv))
                 {
                     pronasao = true;
                     break;
@@ -177,7 +178,7 @@ namespace e_Demokratija
             int redniBroj = Int32.Parse(unos);
             bool izbrisan = false;
 
-            for (int i = 1; i <= kandidati.Count; i++)
+            for (int i = 0; i < kandidati.Count; i++)
             {
                 if (kandidati[i].RedniBroj.Equals(redniBroj))
                 {
@@ -202,7 +203,7 @@ namespace e_Demokratija
             string naziv = Console.ReadLine();
             bool izbrisan = false;
 
-            for (int i = 1; i < stranke.Count; i++)
+            for (int i = 0; i < stranke.Count; i++)
             {
                 if (stranke[i].Naziv.Equals(naziv))
                 {
