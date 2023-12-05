@@ -22,7 +22,7 @@ namespace e_Demokratija
             var putanjaStranke = Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "stranke.csv");
             var putanjaGlasovi = Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasovi.csv");
 
-            if (File.Exists(putanjaGlasaci))
+            if (!File.Exists(putanjaGlasaci))
             {
                 File.Create(putanjaGlasaci).Close();
             }
@@ -32,7 +32,7 @@ namespace e_Demokratija
                 File.Create(putanjaKandidati).Close();
             }
 
-            if (File.Exists(putanjaStranke))
+            if (!File.Exists(putanjaStranke))
             {
                 File.Create(putanjaStranke).Close();
             }
@@ -119,7 +119,7 @@ namespace e_Demokratija
         public void AzurirajGlasaceIzCSV(List<Glasac> glasaci)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
-            csvConfig.HasHeaderRecord = false;
+            csvConfig.HasHeaderRecord = true;
 
             using (var writer = new StreamWriter(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasaci.csv")))
             using (var csv = new CsvWriter(writer, csvConfig))

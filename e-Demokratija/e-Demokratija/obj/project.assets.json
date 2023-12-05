@@ -49,19 +49,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\": {}
+    "C:\\Users\\Vildana\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+      "projectUniqueName": "C:\\Users\\Vildana\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
       "projectName": "e-Demokratija",
-      "projectPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
-      "packagesPath": "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\obj\\",
+      "projectPath": "C:\\Users\\Vildana\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+      "packagesPath": "C:\\Users\\Vildana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vildana\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Abdel Adilovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Vildana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -103,6 +103,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.17, 5.0.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
