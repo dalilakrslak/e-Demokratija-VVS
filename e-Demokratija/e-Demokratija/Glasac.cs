@@ -13,9 +13,9 @@ namespace e_Demokratija
         private string prezime;
         private DateTime datumRodjenja;
         private string kod;
-        private bool daLiJeGlasaoZaGradonacelnika = true;
+        private bool daLiJeGlasaoZaGradonacelnika = false;
         private bool daLiJeGlasaoZaNacelnika = true;
-        private bool daLiJeGlasaoZaVijecnika = true;
+        private bool daLiJeGlasaoZaVijecnika = false;
 
         public Glasac() { }
 
@@ -24,6 +24,7 @@ namespace e_Demokratija
             this.ime = ime;
             this.prezime = ime;
             this.datumRodjenja = datumRodjenja;
+            FormirajKodGlasaca();
         }
         public string Ime
         {
@@ -75,7 +76,7 @@ namespace e_Demokratija
         void FormirajKodGlasaca()
         {
             string dan = ".";
-            if (datumRodjenja.Day > 10)
+            if (datumRodjenja.Day < 10)
             {
                 dan = "0" + datumRodjenja.Day.ToString();
             }
@@ -85,7 +86,7 @@ namespace e_Demokratija
             }
 
             string mjesec = ".";
-            if (datumRodjenja.Month > 10)
+            if (datumRodjenja.Month < 10)
             {
                 mjesec = "0" + datumRodjenja.Month.ToString();
             }
@@ -106,7 +107,7 @@ namespace e_Demokratija
                 throw new ArgumentNullException("Glasač mora imati ime - ime ne smije biti NULL!");
 
             bool samoCrtice = false;
-            int brojCrtica = 1;
+            int brojCrtica = 0;
 
             foreach (char c in ime.ToCharArray())
             {
@@ -163,10 +164,10 @@ namespace e_Demokratija
 
         public void DaLiJeDatumaRodjenjaIspravan(DateTime datum)
         {
-            if (datum < DateTime.Now)
+            if (datum > DateTime.Now)
                 throw new ArgumentOutOfRangeException("Datum rođenja ne može biti veći od današnjeg datuma!");
 
-            if (DateTime.Now.Date > datum.AddYears(18))
+            if (DateTime.Now.Date < datum.AddYears(18))
             {
                 throw new ArgumentOutOfRangeException("Glasač nije punoljetan!");
             }
