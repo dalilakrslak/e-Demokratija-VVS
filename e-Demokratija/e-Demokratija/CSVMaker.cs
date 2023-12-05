@@ -1,6 +1,5 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using e_Demokratija;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,7 +27,7 @@ namespace e_Demokratija
                 File.Create(putanjaGlasaci).Close();
             }
 
-            if (File.Exists(putanjaKandidati))
+            if (!File.Exists(putanjaKandidati))
             {
                 File.Create(putanjaKandidati).Close();
             }
@@ -38,7 +37,7 @@ namespace e_Demokratija
                 File.Create(putanjaStranke).Close();
             }
 
-            if (File.Exists(putanjaGlasovi))
+            if (!File.Exists(putanjaGlasovi))
             {
                 File.Create(putanjaGlasovi).Close();
             }
@@ -131,7 +130,7 @@ namespace e_Demokratija
         public void AzurirajStrankeIzCSV(List<Stranka> stranke)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
-            csvConfig.HasHeaderRecord = false;
+            csvConfig.HasHeaderRecord = true;
 
             using (var writer = new StreamWriter(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "stranke.csv")))
             using (var csv = new CsvWriter(writer, csvConfig))
