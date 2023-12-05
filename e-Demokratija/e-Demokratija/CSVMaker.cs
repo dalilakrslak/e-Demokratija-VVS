@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using e_Demokratija;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,22 +23,22 @@ namespace e_Demokratija
             var putanjaStranke = Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "stranke.csv");
             var putanjaGlasovi = Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasovi.csv");
 
-            if (!File.Exists(putanjaGlasaci))
+            if (File.Exists(putanjaGlasaci))
             {
                 File.Create(putanjaGlasaci).Close();
             }
 
-            if (!File.Exists(putanjaKandidati))
+            if (File.Exists(putanjaKandidati))
             {
                 File.Create(putanjaKandidati).Close();
             }
 
-            if (!File.Exists(putanjaStranke))
+            if (File.Exists(putanjaStranke))
             {
                 File.Create(putanjaStranke).Close();
             }
 
-            if (!File.Exists(putanjaGlasovi))
+            if (File.Exists(putanjaGlasovi))
             {
                 File.Create(putanjaGlasovi).Close();
             }
@@ -119,7 +120,7 @@ namespace e_Demokratija
         public void AzurirajGlasaceIzCSV(List<Glasac> glasaci)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
-            csvConfig.HasHeaderRecord = true;
+            csvConfig.HasHeaderRecord = false;
 
             using (var writer = new StreamWriter(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "glasaci.csv")))
             using (var csv = new CsvWriter(writer, csvConfig))
@@ -130,7 +131,7 @@ namespace e_Demokratija
         public void AzurirajStrankeIzCSV(List<Stranka> stranke)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
-            csvConfig.HasHeaderRecord = true; 
+            csvConfig.HasHeaderRecord = false;
 
             using (var writer = new StreamWriter(Path.Combine(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName, "e-Demokratija"), "stranke.csv")))
             using (var csv = new CsvWriter(writer, csvConfig))
