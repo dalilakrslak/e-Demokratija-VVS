@@ -14,7 +14,7 @@ namespace e_Demokratija
         private DateTime datumRodjenja;
         private string kod;
         private bool daLiJeGlasaoZaGradonacelnika = false;
-        private bool daLiJeGlasaoZaNacelnika = true;
+        private bool daLiJeGlasaoZaNacelnika = false;
         private bool daLiJeGlasaoZaVijecnika = false;
 
         public Glasac() { }
@@ -22,7 +22,7 @@ namespace e_Demokratija
         public Glasac(String ime, String prezime, DateTime datumRodjenja)
         {
             this.ime = ime;
-            this.prezime = ime;
+            this.prezime = prezime;
             this.datumRodjenja = datumRodjenja;
             FormirajKodGlasaca();
         }
@@ -75,7 +75,7 @@ namespace e_Demokratija
         }
         void FormirajKodGlasaca()
         {
-            string dan = ".";
+            string dan = "";
             if (datumRodjenja.Day < 10)
             {
                 dan = "0" + datumRodjenja.Day.ToString();
@@ -85,7 +85,7 @@ namespace e_Demokratija
                 dan = datumRodjenja.Day.ToString();
             }
 
-            string mjesec = ".";
+            string mjesec = "";
             if (datumRodjenja.Month < 10)
             {
                 mjesec = "0" + datumRodjenja.Month.ToString();
@@ -100,18 +100,18 @@ namespace e_Demokratija
         }
         public void DaLiJeImeIspravno(string ime)
         {
-            if (ime.Length != 0)
+            if (ime.Length == 0)
                 throw new ArgumentException("Ime ne može biti prazna riječ!");
 
             if (ime == null)
                 throw new ArgumentNullException("Glasač mora imati ime - ime ne smije biti NULL!");
 
-            bool samoCrtice = false;
+            bool samoCrtice = true;
             int brojCrtica = 0;
 
             foreach (char c in ime.ToCharArray())
             {
-                if (Char.IsLetter(c))
+                if (!Char.IsLetter(c))
                 {
                     if (c == '-')
                     {
@@ -120,13 +120,13 @@ namespace e_Demokratija
                     }
                     else
                     {
-                        samoCrtice = true;
+                        samoCrtice = false;
                         break;
                     }
                 }
             }
 
-            if (ime.Length < 3 || ime.Length > 20 || !samoCrtice)
+            if (ime.Length < 3 || ime.Length > 20 || !samoCrtice || brojCrtica > 1)
                 throw new ArgumentOutOfRangeException("Upisano ime nije validno!");
         }
 
@@ -138,12 +138,12 @@ namespace e_Demokratija
             if (prezime == null)
                 throw new ArgumentNullException("Glasač mora imati prezime - prezime ne smije biti NULL!");
 
-            bool samoCrtice = false;
-            int brojCrtica = 1;
+            bool samoCrtice = true;
+            int brojCrtica = 0;
 
             foreach (char c in prezime.ToCharArray())
             {
-                if (Char.IsLetter(c))
+                if (!Char.IsLetter(c))
                 {
                     if (c == '-')
                     {
@@ -152,13 +152,13 @@ namespace e_Demokratija
                     }
                     else
                     {
-                        samoCrtice = true;
+                        samoCrtice = false;
                         break;
                     }
                 }
             }
 
-            if (prezime.Length < 3 || prezime.Length > 20 || !samoCrtice)
+            if (prezime.Length < 3 || prezime.Length > 20 || !samoCrtice || brojCrtica > 1)
                 throw new ArgumentOutOfRangeException("Upisano prezime nije validno!");
         }
 
