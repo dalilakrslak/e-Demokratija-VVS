@@ -11,7 +11,7 @@ namespace e_Demokratija
         public string password;
         public Supervizor()
         {
-            password = "";
+            password = "admin";
         }
         public string Password
         {
@@ -49,7 +49,7 @@ namespace e_Demokratija
             while (true)
             {
                 nazivStranke = Console.ReadLine();
-                bool temp = true;
+                bool temp = false;
                 foreach (Stranka stranka in stranke)
                 {
                     if (nazivStranke.Equals(stranka.Naziv))
@@ -74,7 +74,7 @@ namespace e_Demokratija
             while (true)
             {
                 pozicija = Console.ReadLine();
-                if (pozicija.Equals("gradonacelnik") && pozicija.Equals("nacelnik") && pozicija.Equals("vijecnik"))
+                if (pozicija.Equals("gradonacelnik") || pozicija.Equals("nacelnik") || pozicija.Equals("vijecnik"))
                 {
                     break;
                 }
@@ -120,24 +120,22 @@ namespace e_Demokratija
                     pronasao = true;
                     break;
                 }
-
-                if (pronasao)
-                {
-                    Console.WriteLine("Stranka već postoji!");
-                }
-                else
-                {
-                    nazivStranke = naziv;
-                    Console.Write("Unesite opis stranke: ");
-                    string opis = Console.ReadLine();
-
-                    Stranka stranka = new Stranka(nazivStranke, opis);
-
-                    csvMaker.DodajStranku(stranka);
-                    Console.WriteLine($"\nUspješno ste dodali stranku {stranka.Naziv}!");
-                }
             }
+            if (pronasao)
+            {
+                Console.WriteLine("Stranka već postoji!");
+            }
+            else
+            {
+                nazivStranke = naziv;
+                Console.Write("Unesite opis stranke: ");
+                string opis = Console.ReadLine();
 
+                Stranka stranka = new Stranka(nazivStranke, opis);
+
+                csvMaker.DodajStranku(stranka);
+                Console.WriteLine($"\nUspješno ste dodali stranku {stranka.Naziv}!");
+            }
         }
 
         public void IzmijeniStranku(CSVMaker csvMaker, List<Stranka> stranke)
@@ -183,7 +181,7 @@ namespace e_Demokratija
             {
                 if (kandidati[i].RedniBroj.Equals(redniBroj))
                 {
-                    kandidati.RemoveAt(i--);
+                    kandidati.RemoveAt(i);
                     izbrisan = true;
                     break;
                 }
