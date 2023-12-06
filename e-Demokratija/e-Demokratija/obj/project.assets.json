@@ -49,19 +49,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\": {}
+    "C:\\Users\\29\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+      "projectUniqueName": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
       "projectName": "e-Demokratija",
-      "projectPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
-      "packagesPath": "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\obj\\",
+      "projectPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+      "packagesPath": "C:\\Users\\29\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Abdel Adilovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\29\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -108,7 +108,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
