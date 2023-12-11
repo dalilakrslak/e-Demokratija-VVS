@@ -2,6 +2,7 @@ using e_Demokratija;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
+
 namespace GlasacTest
 {
     [TestClass]
@@ -203,6 +204,17 @@ namespace GlasacTest
             Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJeGlasaoZaVijecnika = true;
             Assert.IsTrue(g.DaLiJeGlasaoZaVijecnika);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestZamjenskiObjekat()
+        {
+            Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2001, 11, 23));
+            Spy temp = new Spy();
+            temp.Glasao = false;
+            Assert.IsTrue(g.VjerodostojnostGlasaca(temp));
+            temp.Glasao = true;
+            Assert.IsTrue(g.VjerodostojnostGlasaca(temp));
         }
     }
 }

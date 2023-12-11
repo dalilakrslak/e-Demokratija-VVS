@@ -166,5 +166,11 @@ namespace e_Demokratija
                 throw new ArgumentOutOfRangeException("Glasač nije punoljetan!");
             }
         }
+        public bool VjerodostojnostGlasaca(IProvjera sigurnosnaProvjera)
+        {
+            if (sigurnosnaProvjera.DaLiJeVecGlasao(kod))
+                throw new Exception("Glasač je već izvršio glasanje!");
+            return true;
+        }
     }
 }
