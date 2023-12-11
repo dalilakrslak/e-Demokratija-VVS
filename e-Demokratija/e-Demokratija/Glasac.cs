@@ -103,9 +103,6 @@ namespace e_Demokratija
             if (ime.Length == 0)
                 throw new ArgumentException("Ime ne može biti prazna riječ!");
 
-            if (ime == null)
-                throw new ArgumentNullException("Glasač mora imati ime - ime ne smije biti NULL!");
-
             bool samoCrtice = true;
             int brojCrtica = 0;
 
@@ -134,9 +131,6 @@ namespace e_Demokratija
         {
             if (prezime.Length == 0)
                 throw new ArgumentException("Prezime ne može biti prazna riječ!");
-
-            if (prezime == null)
-                throw new ArgumentNullException("Glasač mora imati prezime - prezime ne smije biti NULL!");
 
             bool samoCrtice = true;
             int brojCrtica = 0;
