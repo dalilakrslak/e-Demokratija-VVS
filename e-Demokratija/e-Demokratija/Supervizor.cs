@@ -19,11 +19,14 @@ namespace e_Demokratija
         }
         public void DodajKandidata(CSVMaker csvMaker, List<Stranka> stranke, List<Kandidat> kandidati)
         {
+            Kandidat kandidat = new Kandidat();
             Console.Write("\nUnesite ime: ");
             string imeKandidata = Console.ReadLine();
+            kandidat.DaLiJeImeIspravno(imeKandidata);
 
             Console.Write("Unesite prezime: ");
             string prezimeKandidata = Console.ReadLine();
+            kandidat.DaLiJePrezimeIspravno(prezimeKandidata);
 
             Console.Write("Unesite dan rodjenja: ");
             string danString = Console.ReadLine();
@@ -39,9 +42,11 @@ namespace e_Demokratija
             int godina = Int32.Parse(godinaString);
 
             DateTime datumRodjenjaKandidata = new DateTime(godina, mjesec, dan);
+            kandidat.DaLiJeDatumaRodjenjaIspravan(datumRodjenjaKandidata);
 
             Console.Write("Unesite opis kandidata: ");
             string opis = Console.ReadLine();
+            kandidat.DaLiJeOpisIspravan(opis);
 
             Console.Write("Unesite naziv stranke kandidata: ");
             string nazivStranke = "";
@@ -72,10 +77,10 @@ namespace e_Demokratija
             Console.WriteLine("Pozicija kandidata (gradonacelnik, nacelnik ili vijecnik): ");
             string pozicija = "";
 
-            while (true)
+           while (true)
             {
                 pozicija = Console.ReadLine();
-                if (pozicija.Equals("gradonacelnik") || pozicija.Equals("nacelnik") || pozicija.Equals("vijecnik"))
+                if (kandidat.DaLiJePozicijaIspravna(pozicija))
                 {
                     break;
                 }
@@ -101,7 +106,7 @@ namespace e_Demokratija
                     break;
                 }
             }
-            Kandidat kandidat = new Kandidat(imeKandidata, prezimeKandidata, datumRodjenjaKandidata, poz, opis, s);
+            kandidat = new Kandidat(imeKandidata, prezimeKandidata, datumRodjenjaKandidata, poz, opis, s);
 
             csvMaker.DodajKandidata(kandidat);
             Console.WriteLine($"\nUspješno ste dodali kandidata {kandidat.Ime} {kandidat.Prezime}!");
