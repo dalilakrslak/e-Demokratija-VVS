@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace e_Demokratija
 {
-    public enum Pozicija {
-        gradonacelnik, 
-        nacelnik, 
+    public enum Pozicija
+    {
+        gradonacelnik,
+        nacelnik,
         vijecnik
     };
     public class Kandidat : Glasac
@@ -55,20 +56,20 @@ namespace e_Demokratija
             get => brojGlasova;
             set => brojGlasova = value;
         }
-        public void DaLiJeOpisIspravan (string opis)
+        public void DaLiJeOpisIspravan(string opis)
         {
             if (string.IsNullOrWhiteSpace(opis))
                 throw new ArgumentException("Opis kandidata ne može biti prazan!");
-            if(opis.Split(' ').Length > 3)
+            if (opis.Split(' ').Length < 3)
             {
                 throw new ArgumentException("Opis kandidata treba sadrzavati minimalno 3 rijeci!");
             }
         }
-        public bool DaLiJePozicijaIspravna (string pozicija)
+        public bool DaLiJePozicijaIspravna(string pozicija)
         {
-            return pozicija.Equals("gradonacelnik") || pozicija.Equals("nacelnik");
+            return pozicija.Equals("gradonacelnik") || pozicija.Equals("nacelnik") || pozicija.Equals("vijecnik");
         }
-        public void IspisiKandidateZaGradonacelnika (List<Kandidat> kandidati)
+        public void IspisiKandidateZaGradonacelnika(List<Kandidat> kandidati)
         {
             foreach (Kandidat gradonacelnik in kandidati)
             {
@@ -81,7 +82,7 @@ namespace e_Demokratija
                 }
             }
         }
-        public void IspisiKandidateZaNacelnika (List<Kandidat> kandidati)
+        public void IspisiKandidateZaNacelnika(List<Kandidat> kandidati)
         {
             foreach (Kandidat nacelnik in kandidati)
             {
@@ -94,11 +95,11 @@ namespace e_Demokratija
                 }
             }
         }
-        public void IspisiKandidateZaVijecnike (List<Kandidat> kandidati)
+        public void IspisiKandidateZaVijecnike(List<Kandidat> kandidati)
         {
             foreach (Kandidat vijecnik in kandidati)
             {
-                if (vijecnik.Pozicija.ToString().Equals("nacelnik"))
+                if (vijecnik.Pozicija.ToString().Equals("vijecnik"))
                 {
                     if (vijecnik.Stranka != null)
                         Console.WriteLine(vijecnik.RedniBroj + " - " + vijecnik.Ime + " " + vijecnik.Prezime + " (" + vijecnik.Stranka.Naziv + ")");
