@@ -109,31 +109,21 @@ namespace e_Demokratija
 
                             Console.Write("Unesite odgovarajuće slovo za izbor: ");
                             string unos = Convert.ToString(Console.ReadLine());
+                            Kandidat kand = new Kandidat();
                             if (unos == "a")
                             {
                                 if (trenutniGlasac.DaLiJeGlasaoZaGradonacelnika == false)
                                 {
                                     Console.WriteLine("\nKandidati za gradonacelnika su: \n");
-                                    foreach (Kandidat gradonacelnik in kandidati)
-                                    {
-                                        if (gradonacelnik.Pozicija.ToString().Equals("gradonacelnik"))
-                                        {
-                                            if (gradonacelnik.Stranka != null)
-                                                Console.WriteLine(gradonacelnik.RedniBroj + " - " + gradonacelnik.Ime + " " + gradonacelnik.Prezime + " (" + gradonacelnik.Stranka.Naziv + ")");
-                                            else
-                                                Console.WriteLine(gradonacelnik.RedniBroj + " - " + gradonacelnik.Ime + " " + gradonacelnik.Prezime + " (nezavisni kandidat)");
-                                        }
-                                    }
+                                    kand.IspisiKandidateZaGradonacelnika(kandidati);
                                     Console.Write("\nVaš glas je za gradonačelnika pod rednim brojem: ");
                                     int redniBrojGradonacelnika = Int32.Parse(Console.ReadLine());
                                     foreach (Kandidat k in kandidati)
                                     {
                                         if (k.RedniBroj == redniBrojGradonacelnika)
                                         {
-                                            trenutniGlasac.DaLiJeGlasaoZaGradonacelnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
-                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -148,26 +138,15 @@ namespace e_Demokratija
                                 if (trenutniGlasac.DaLiJeGlasaoZaNacelnika == false)
                                 {
                                     Console.WriteLine("\nKandidati za načelnika su: \n");
-                                    foreach (Kandidat nacelnik in kandidati)
-                                    {
-                                        if (nacelnik.Pozicija.ToString().Equals("nacelnik"))
-                                        {
-                                            if (nacelnik.Stranka != null)
-                                                Console.WriteLine(nacelnik.RedniBroj + " - " + nacelnik.Ime + " " + nacelnik.Prezime + " (" + nacelnik.Stranka.Naziv + ")");
-                                            else
-                                                Console.WriteLine(nacelnik.RedniBroj + " - " + nacelnik.Ime + " " + nacelnik.Prezime + " (nezavisni kandidat)");
-                                        }
-                                    }
+                                    kand.IspisiKandidateZaNacelnika(kandidati);
                                     Console.Write("\nVaš glas je za načelnika pod rednim brojem: ");
                                     int redniBrojNacelnika = Int32.Parse(Console.ReadLine());
                                     foreach (Kandidat k in kandidati)
                                     {
                                         if (k.RedniBroj == redniBrojNacelnika)
                                         {
-                                            trenutniGlasac.DaLiJeGlasaoZaNacelnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
-                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -182,26 +161,15 @@ namespace e_Demokratija
                                 if (trenutniGlasac.DaLiJeGlasaoZaVijecnika == false)
                                 {
                                     Console.WriteLine("\nKandidati za vijecnika su: \n");
-                                    foreach (Kandidat vijecnik in kandidati)
-                                    {
-                                        if (vijecnik.Pozicija.ToString().Equals("vijecnik"))
-                                        {
-                                            if (vijecnik.Stranka != null)
-                                                Console.WriteLine(vijecnik.RedniBroj + " - " + vijecnik.Ime + " " + vijecnik.Prezime + " (" + vijecnik.Stranka.Naziv + ")");
-                                            else
-                                                Console.WriteLine(vijecnik.RedniBroj + " - " + vijecnik.Ime + " " + vijecnik.Prezime + " (nezavisni kandidat)");
-                                        }
-                                    }
+                                    kand.IspisiKandidateZaVijecnike(kandidati);
                                     Console.Write("\nVaš glas je za vijecnika pod rednim brojem: ");
                                     int redniBrojVijecnika = Int32.Parse(Console.ReadLine());
                                     foreach (Kandidat k in kandidati)
                                     {
                                         if (k.RedniBroj == redniBrojVijecnika)
                                         {
-                                            trenutniGlasac.DaLiJeGlasaoZaVijecnika = true;
                                             Glas glas = new Glas(trenutniGlasac, k);
                                             csvMaker.DodajGlas(glas);
-                                            k.BrojGlasova++;
                                             csvMaker.AzurirajKandidateIzCSV(kandidati);
                                             csvMaker.AzurirajGlasaceIzCSV(glasaci);
                                             break;
@@ -296,26 +264,10 @@ namespace e_Demokratija
                         Console.ReadKey();
                         break;
                     case 4:
-                        Console.Write("\nUkupno je registrovano " + glasaci.Count + " glasaca.\n");
-                        int brojacZaGradonacelnika = 0, brojacZaNacelnika = 0, brojacZaVijecnike = 0, brojacZaStranke = 0;
-                        foreach (Glasac g in glasaci)
-                        {
-                            if (g.DaLiJeGlasaoZaGradonacelnika)
-                                brojacZaGradonacelnika++;
-                            if (g.DaLiJeGlasaoZaNacelnika)
-                                brojacZaNacelnika++;
-                            if (g.DaLiJeGlasaoZaVijecnika)
-                                brojacZaVijecnike++;
-                        }
-
-                        foreach (Stranka s in stranke)
-                        {
-                            brojacZaStranke += s.BrojGlasova;
-                        }
-                        Console.WriteLine("Od ukupno " + glasaci.Count + " glasalo je " + brojacZaGradonacelnika + " za gradonacelnika, " + brojacZaNacelnika + " za nacelnika, " + brojacZaVijecnike + " za vijecnike i " + brojacZaStranke + " za stranke generalno.\n");
-                        kandidati.Sort((kandidat1, kandidat2) => kandidat1.BrojGlasova.CompareTo(kandidat2.BrojGlasova));
-                        //ispis glasanja -> nakon dodanih kandidata i glasova
-                        Console.WriteLine("Pritisnite bilo koju tipku za povratak na glavni izbornik.");
+                        Glas g = new Glas();
+                        g.IspisStanja(glasaci, stranke, kandidati, glasovi);
+                        
+                        Console.WriteLine("\nPritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
                     default:
