@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Glasaci>
+	<Glasac>
+ 		<Ime>Niko</Ime>
+ 		<Prezime>Nikic</Prezime>
+	</Glasac>
+	<Glasac>
+ 		<Ime>Fiko</Ime>
+ 		<Prezime>Fikic</Prezime>	
+	</Glasac>
+	<Glasac>
+ 		<Ime>Ciko</Ime>
+ 		<Prezime>Cikic</Prezime>	
+	</Glasac>
+</Glasaci>

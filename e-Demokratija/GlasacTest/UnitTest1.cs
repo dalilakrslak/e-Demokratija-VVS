@@ -1,13 +1,17 @@
 using e_Demokratija;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-
+using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace GlasacTest
 {
     [TestClass]
     public class UnitTest1
     {
+        private XmlReaderSettings settings = new XmlReaderSettings();
         [TestMethod]
         public void TestIspravnogKonstruktoraKlaseGlasac1()
         {
@@ -215,6 +219,36 @@ namespace GlasacTest
             Assert.IsTrue(g.VjerodostojnostGlasaca(temp));
             temp.Glasao = true;
             Assert.IsTrue(g.VjerodostojnostGlasaca(temp));
+        }
+        public static IEnumerable<object[]> ReadXML()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("..\\..\\..\\TestData.xml");
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                List<string> elements = new List<string>();
+                foreach (XmlNode innerNode in node)
+                {
+                    elements.Add(innerNode.InnerText);
+                }
+                yield return new object[] { elements[0], elements[1] };
+            }
+        }
+        static IEnumerable<object[]> GlasaciXML
+        {
+            get
+            {
+                return ReadXML();
+            }
+        }
+        
+        // DDT TESTS
+        [DynamicData(nameof(GlasaciXML))]
+        [TestMethod]
+        public void TestKonstruktoraPacijentaXML(string ime, string prezime)
+        {
+            Glasac g = new Glasac(ime, prezime, new DateTime(2001, 11, 23));
+            
         }
     }
 }
