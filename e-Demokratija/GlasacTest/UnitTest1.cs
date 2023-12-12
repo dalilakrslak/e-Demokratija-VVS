@@ -1,7 +1,11 @@
+using CsvHelper;
 using e_Demokratija;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -223,7 +227,7 @@ namespace GlasacTest
         public static IEnumerable<object[]> ReadXML()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("..\\..\\..\\TestData.xml");
+            doc.Load("..\\..\\..\\Glasaci.xml");
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 List<string> elements = new List<string>();
@@ -234,6 +238,20 @@ namespace GlasacTest
                 yield return new object[] { elements[0], elements[1] };
             }
         }
+        public static IEnumerable<object[]> ReadCSV()
+        {
+            using (var reader = new StreamReader("..\\..\\..\\Glasaci.csv"))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var rows = csv.GetRecords<dynamic>();
+                foreach (var row in rows)
+                {
+                    var values = ((IDictionary<String, Object>)row).Values;
+                    var elements = values.Select(elem => elem.ToString()).ToList();
+                    yield return new object[] { elements[0], elements[1] };
+                }
+            }
+        }
         static IEnumerable<object[]> GlasaciXML
         {
             get
@@ -241,7 +259,14 @@ namespace GlasacTest
                 return ReadXML();
             }
         }
-        
+        static IEnumerable<object[]> GlasaciCSV
+        {
+            get
+            {
+                return ReadCSV();
+            }
+        }
+
         // DDT TESTS
         [DynamicData(nameof(GlasaciXML))]
         [TestMethod]
@@ -249,6 +274,13 @@ namespace GlasacTest
         {
             Glasac g = new Glasac(ime, prezime, new DateTime(2001, 11, 23));
             
+        }
+        [DynamicData(nameof(GlasaciCSV))]
+        [TestMethod]
+        public void TestKonstruktoraPacijentaCSV(string ime, string prezime)
+        {
+            Glasac g = new Glasac(ime, prezime, new DateTime(2001, 11, 23));
+
         }
     }
 }
