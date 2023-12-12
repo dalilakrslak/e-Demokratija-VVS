@@ -7,10 +7,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 
-namespace GlasacTest
+namespace Testovi
 {
     [TestClass]
     public class UnitTest1
@@ -270,14 +268,14 @@ namespace GlasacTest
         // DDT TESTS
         [DynamicData(nameof(GlasaciXML))]
         [TestMethod]
-        public void TestKonstruktoraPacijentaXML(string ime, string prezime)
+        public void TestKonstruktoraGlasacaXML(string ime, string prezime)
         {
             Glasac g = new Glasac(ime, prezime, new DateTime(2001, 11, 23));
             
         }
         [DynamicData(nameof(GlasaciCSV))]
         [TestMethod]
-        public void TestKonstruktoraPacijentaCSV(string ime, string prezime)
+        public void TestKonstruktoraGlasacaCSV(string ime, string prezime)
         {
             Glasac g = new Glasac(ime, prezime, new DateTime(2001, 11, 23));
 

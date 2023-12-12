@@ -225,7 +225,7 @@ namespace e_Demokratija
                     case 3:
                         int unosSupervizora = -1;
                         Console.Write("\nDobrodošli! Molimo vas da potvrdite svoj identitet unosom vaše lozinke: ");
-                        if (Console.ReadLine() == "admin")
+                        if (supervizor.DaLiJePasswordIspravan(Console.ReadLine()))
                         {
                             Console.WriteLine("\nVi ste supervizor! Molimo izaberite jednu od sljedećih opcija:");
                             Console.WriteLine("1 - Dodavanje kandidata");
@@ -237,23 +237,151 @@ namespace e_Demokratija
                             unosSupervizora = Int32.Parse(Console.ReadLine());
                             if(unosSupervizora == 1)
                             {
-                                supervizor.DodajKandidata(csvMaker, stranke, kandidati);
+                                Kandidat kandidat = new Kandidat();
+                                Console.Write("\nUnesite ime: ");
+                                string imeKandidata = Console.ReadLine();
+                                kandidat.DaLiJeImeIspravno(imeKandidata);
+
+                                Console.Write("Unesite prezime: ");
+                                string prezimeKandidata = Console.ReadLine();
+                                kandidat.DaLiJePrezimeIspravno(prezimeKandidata);
+
+                                Console.Write("Unesite dan rodjenja: ");
+                                string danKandidataString = Console.ReadLine();
+
+                                Console.Write("Unesite mjesec rodjenja: ");
+                                string mjesecKandidataString = Console.ReadLine();
+
+                                Console.Write("Unesite godinu rodjenja: ");
+                                string godinaKandidataString = Console.ReadLine();
+
+                                int danK = Int32.Parse(danKandidataString);
+                                int mjesecK = Int32.Parse(mjesecKandidataString);
+                                int godinaK = Int32.Parse(godinaKandidataString);
+
+                                DateTime datumRodjenjaKandidata = new DateTime(godinaK, mjesecK, danK);
+                                kandidat.DaLiJeDatumaRodjenjaIspravan(datumRodjenjaKandidata);
+
+                                Console.Write("Unesite opis kandidata: ");
+                                string opis = Console.ReadLine();
+                                kandidat.DaLiJeOpisIspravan(opis);
+
+                                Console.Write("Unesite naziv stranke kandidata: ");
+                                string nazivStranke = "";
+
+                                while (true)
+                                {
+                                    nazivStranke = Console.ReadLine();
+                                    bool temp = false;
+                                    if(supervizor.DaLiStrankaPostoji(stranke, nazivStranke))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Stranka ne postoji, unesite ponovo naziv stranke: ");
+                                    }
+                                }
+
+                                Console.WriteLine("Pozicija kandidata (gradonacelnik, nacelnik ili vijecnik): ");
+                                string pozicija = "";
+
+                                while (true)
+                                {
+                                    pozicija = Console.ReadLine();
+                                    if (kandidat.DaLiJePozicijaIspravna(pozicija))
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Neispravan unos, molimo vas unesite jednu od pozicija (gradonacelnik, nacelnik ili vijecnik): ");
+                                    }
+                                }
+                                Pozicija poz = Pozicija.vijecnik;
+                                if (pozicija == "vijecnik")
+                                    poz = Pozicija.vijecnik;
+                                if (pozicija == "nacelnik")
+                                    poz = Pozicija.nacelnik;
+                                if (pozicija == "gradonacelnik")
+                                    poz = Pozicija.gradonacelnik;
+
+                                Stranka s = null;
+                                foreach (Stranka str in stranke)
+                                {
+                                    if (str.Naziv.Equals(nazivStranke))
+                                    {
+                                        s = str;
+                                        break;
+                                    }
+                                }
+                                kandidat = new Kandidat(imeKandidata, prezimeKandidata, datumRodjenjaKandidata, poz, opis, s);
+
+                                csvMaker.DodajKandidata(kandidat);
+                                Console.WriteLine($"\nUspješno ste dodali kandidata {kandidat.Ime} {kandidat.Prezime}!");
                             }
                             else if (unosSupervizora == 2)
                             {
-                                supervizor.IzbrisiKandidata(csvMaker, kandidati);
+                                Console.Write("\nUnesite redni broj kandidata kojeg želite izbrisati: ");
+                                string unos = Console.ReadLine();
+                                if (supervizor.DaLiKandidatPostoji(kandidati, Int32.Parse(unos)))
+                                {
+                                    supervizor.ObrisiKandidata(csvMaker, kandidati, Int32.Parse(unos));
+                                    Console.WriteLine("\nKandidat uspješno izbrisan!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nKandidat ne postoji!");
+                                }
                             }
                             else if (unosSupervizora == 3)
                             {
-                                supervizor.DodajStranku(csvMaker, stranke);
+                                Console.Write("\nUnesite naziv stranke: ");
+                                string naziv = Console.ReadLine();
+                                if (supervizor.DaLiStrankaPostoji(stranke, naziv))
+                                {
+                                    Console.WriteLine("Stranka već postoji!");
+                                }
+                                else
+                                {
+                                    Console.Write("Unesite opis stranke: ");
+                                    string opis = Console.ReadLine();
+                                    Stranka stranka = new Stranka(naziv, opis);
+                                    csvMaker.DodajStranku(stranka);
+                                    Console.WriteLine($"\nUspješno ste dodali stranku {stranka.Naziv}!");
+                                }
                             }
                             else if (unosSupervizora == 4)
                             {
-                                supervizor.IzmijeniStranku(csvMaker, stranke); 
+                                Console.Write("\nUnesite naziv stranke koju želite izmijeniti: ");
+                                string naziv = Console.ReadLine();
+                                if (supervizor.DaLiStrankaPostoji(stranke, naziv))
+                                {
+                                    Console.Write("\nUnesite novi naziv stranke: ");
+                                    string noviNaziv = Console.ReadLine();
+                                    Console.Write("Unesite novi opis stranke: ");
+                                    string noviOpis = Console.ReadLine();
+                                    supervizor.IzmijeniStranku(csvMaker, stranke, naziv, noviNaziv, noviOpis);
+                                    Console.WriteLine("\nIzmjene su uspješne!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nStranka ne postoji!");
+                                }
                             }
                             else if (unosSupervizora == 5)
                             {
-                                supervizor.IzbrisiStranku(csvMaker, stranke);
+                                Console.Write("\nUnesite naziv stranke koju želite izbrisati: ");
+                                string naziv = Console.ReadLine();
+                                if (supervizor.DaLiStrankaPostoji(stranke, naziv))
+                                {
+                                    supervizor.ObrisiStranku(csvMaker, stranke, naziv);
+                                    Console.WriteLine("\nStranka uspješno izbrisana!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nStranka ne postoji!");
+                                }
                             }
                         }
                         else
