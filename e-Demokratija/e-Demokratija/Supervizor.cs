@@ -13,9 +13,14 @@ namespace e_Demokratija
         {
             password = "admin";
         }
+        public Supervizor(string password)
+        {
+            this.password = password;
+        }
         public string Password
         {
             get => password;
+            set => password = value;
         }
         public bool DaLiJePasswordIspravan (string password)
         {
