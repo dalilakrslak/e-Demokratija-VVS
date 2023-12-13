@@ -21,6 +21,19 @@ namespace e_Demokratija
         {
             return password == "admin";
         }
+        public string GenerisiNoviPassword()
+        {
+            Random random = new Random();
+            const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            int length = 8;
+
+            string noviPassword = new string(Enumerable.Repeat(characters, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            password = noviPassword; 
+            return noviPassword;
+        }
+
         public bool DaLiStrankaPostoji(List<Stranka> stranke, string naziv)
         {
             foreach (Stranka s in stranke)
@@ -43,42 +56,16 @@ namespace e_Demokratija
             }
             return false;
         }
-        public void IzmijeniStranku(CSVMaker csvMaker, List<Stranka> stranke, string naziv, string noviNaziv, string noviOpis)
+        public bool DaLiPostojiKandidatSaImenom(List<Kandidat> kandidati, string ime)
         {
-            foreach (Stranka s in stranke)
+            foreach (Kandidat k in kandidati)
             {
-                if (s.Naziv.Equals(naziv))
-                {                   
-                    s.Naziv = noviNaziv;
-                    s.Opis = noviOpis;
-                    break;
-                }
-            }
-            csvMaker.AzurirajStrankeIzCSV(stranke);
-        }
-        public void ObrisiKandidata(CSVMaker csvMaker, List<Kandidat> kandidati, int redniBroj)
-        {
-            for (int i = 0; i < kandidati.Count; i++)
-            {
-                if (kandidati[i].RedniBroj.Equals(redniBroj))
+                if (k.Ime.Equals(ime))
                 {
-                    kandidati.RemoveAt(i);
-                    break;
+                    return true;
                 }
             }
-            csvMaker.AzurirajKandidateIzCSV(kandidati);
-        }
-        public void ObrisiStranku(CSVMaker csvMaker, List<Stranka> stranke, string naziv)
-        {
-            for (int i = 0; i < stranke.Count; i++)
-            {
-                if (stranke[i].Naziv.Equals(naziv))
-                {
-                    stranke.RemoveAt(i);
-                    break;
-                }
-            }
-            csvMaker.AzurirajStrankeIzCSV(stranke);
+            return false;
         }
     }
 }

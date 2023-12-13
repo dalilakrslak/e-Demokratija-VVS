@@ -272,7 +272,6 @@ namespace e_Demokratija
                                 while (true)
                                 {
                                     nazivStranke = Console.ReadLine();
-                                    bool temp = false;
                                     if(supervizor.DaLiStrankaPostoji(stranke, nazivStranke))
                                     {
                                         break;
@@ -326,7 +325,15 @@ namespace e_Demokratija
                                 string unos = Console.ReadLine();
                                 if (supervizor.DaLiKandidatPostoji(kandidati, Int32.Parse(unos)))
                                 {
-                                    supervizor.ObrisiKandidata(csvMaker, kandidati, Int32.Parse(unos));
+                                    for (int i = 0; i < kandidati.Count; i++)
+                                    {
+                                        if (kandidati[i].RedniBroj.Equals(unos))
+                                        {
+                                            kandidati.RemoveAt(i);
+                                            break;
+                                        }
+                                    }
+                                    csvMaker.AzurirajKandidateIzCSV(kandidati);
                                     Console.WriteLine("\nKandidat uspješno izbrisan!");
                                 }
                                 else
@@ -361,7 +368,17 @@ namespace e_Demokratija
                                     string noviNaziv = Console.ReadLine();
                                     Console.Write("Unesite novi opis stranke: ");
                                     string noviOpis = Console.ReadLine();
-                                    supervizor.IzmijeniStranku(csvMaker, stranke, naziv, noviNaziv, noviOpis);
+                                    //supervizor.IzmijeniStranku(csvMaker, stranke, naziv, noviNaziv, noviOpis);
+                                    foreach (Stranka s in stranke)
+                                    {
+                                        if (s.Naziv.Equals(naziv))
+                                        {
+                                            s.Naziv = noviNaziv;
+                                            s.Opis = noviOpis;
+                                            break;
+                                        }
+                                    }
+                                    csvMaker.AzurirajStrankeIzCSV(stranke);
                                     Console.WriteLine("\nIzmjene su uspješne!");
                                 }
                                 else
@@ -375,7 +392,15 @@ namespace e_Demokratija
                                 string naziv = Console.ReadLine();
                                 if (supervizor.DaLiStrankaPostoji(stranke, naziv))
                                 {
-                                    supervizor.ObrisiStranku(csvMaker, stranke, naziv);
+                                    for (int i = 0; i < stranke.Count; i++)
+                                    {
+                                        if (stranke[i].Naziv.Equals(naziv))
+                                        {
+                                            stranke.RemoveAt(i);
+                                            break;
+                                        }
+                                    }
+                                    csvMaker.AzurirajStrankeIzCSV(stranke);
                                     Console.WriteLine("\nStranka uspješno izbrisana!");
                                 }
                                 else

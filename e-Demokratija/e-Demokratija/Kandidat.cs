@@ -35,6 +35,7 @@ namespace e_Demokratija
         public int RedniBroj
         {
             get => redniBroj;
+            set => redniBroj = value;
         }
         public Pozicija Pozicija
         {
