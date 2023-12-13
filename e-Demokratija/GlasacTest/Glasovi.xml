@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Glasovi>
+	<Glas>
+		<Glasac>
+			<Ime>Niko</Ime>
+			<Prezime>Nikic</Prezime>
+		</Glasac>
+		<Kandidat>
+			<Ime>Kandi</Ime>
+			<Prezime>Kandii</Prezime>
+		</Kandidat>
+	</Glas>
+	<Glas>
+		<Glasac>
+			<Ime>Fiko</Ime>
+			<Prezime>Fikic</Prezime>
+		</Glasac>
+		<Kandidat>
+			<Ime>Mandi</Ime>
+			<Prezime>Mandii</Prezime>
+		</Kandidat>
+	</Glas>
+</Glasovi>
