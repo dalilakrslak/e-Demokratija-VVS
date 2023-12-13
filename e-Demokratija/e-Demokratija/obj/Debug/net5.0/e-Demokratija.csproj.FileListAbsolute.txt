@@ -20,3 +20,25 @@ C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\D
 C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\Moq.dll
 C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\System.Diagnostics.EventLog.dll
 C:\Users\29\Documents\GitHub\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.EventLog.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\e-Demokratija.exe
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\e-Demokratija.deps.json
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\e-Demokratija.runtimeconfig.json
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\e-Demokratija.runtimeconfig.dev.json
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\e-Demokratija.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\e-Demokratija.pdb
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\CsvHelper.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\Moq.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\System.Diagnostics.EventLog.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.EventLog.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.csproj.AssemblyReference.cache
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.AssemblyInfoInputs.cache
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.AssemblyInfo.cs
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.csproj.CoreCompileInputs.cache
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.csproj.CopyComplete
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\refint\e-Demokratija.dll
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.pdb
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\e-Demokratija.genruntimeconfig.cache
+C:\Users\Abdel Adilovic\Desktop\VVS\e-Demokratija-VVS\e-Demokratija\e-Demokratija\obj\Debug\net5.0\ref\e-Demokratija.dll

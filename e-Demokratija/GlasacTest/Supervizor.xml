@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Supervizori>
+	<Supervizor>
+		<Password>admin</Password>
+	</Supervizor>
+	<Supervizor>
+		<Password>administrator</Password>
+	</Supervizor>
+	<Supervizor>
+		<Password>password</Password>
+	</Supervizor>
+</Supervizori>

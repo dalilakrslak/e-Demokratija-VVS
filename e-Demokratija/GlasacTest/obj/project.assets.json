@@ -2710,19 +2710,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\29\\.nuget\\packages\\": {}
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\GlasacTest\\Testovi.csproj",
+      "projectUniqueName": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\GlasacTest\\Testovi.csproj",
       "projectName": "Testovi",
-      "projectPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\GlasacTest\\Testovi.csproj",
-      "packagesPath": "C:\\Users\\29\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\GlasacTest\\obj\\",
+      "projectPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\GlasacTest\\Testovi.csproj",
+      "packagesPath": "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\GlasacTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\29\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Abdel Adilovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2736,8 +2736,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj": {
-              "projectPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj"
+            "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj": {
+              "projectPath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj"
             }
           }
         }
@@ -2785,7 +2785,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
