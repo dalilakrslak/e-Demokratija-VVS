@@ -45,13 +45,13 @@ namespace e_Demokratija
             get => kandidat;
             set => kandidat = value;
         }
-        private bool DaLiJeGlasanjePocelo(List<Glas> glasovi)
+        public bool DaLiJeGlasanjePocelo(List<Glas> glasovi)
         {
             if (glasovi.Count == 0)
                 return false;
             return true;
         }
-        private bool UkupniIzborniPragKandidata(List<Glasac> glasaci)
+        public bool UkupniIzborniPragKandidata(List<Glasac> glasaci)
         {
             int ukupanBrojMogucihGlasova = glasaci.Count();
             int ukupanBrojGlasova = 0;
@@ -65,7 +65,7 @@ namespace e_Demokratija
                 return true;
             return false;
         }
-        static void SortiranjeKandidata(List<Kandidat> kandidati)
+        public void SortiranjeKandidata(List<Kandidat> kandidati)
         {
             int n = kandidati.Count;
             for (int i = 0; i < n - 1; i++)
@@ -89,7 +89,7 @@ namespace e_Demokratija
                 if (g.DaLiJeGlasaoZaGradonacelnika)
                     brojacZaGradonacelnika++;
             }
-            Console.WriteLine("\nGlasanje za gradonačelnika: ");
+            Console.WriteLine("\nGlasanje za gradonacelnika: ");
             Console.WriteLine(" - Ukupan broj glasova: " + brojacZaGradonacelnika);
             Console.WriteLine(" - Prva tri mjesta: ");
             SortiranjeKandidata(kandidati);
@@ -184,11 +184,6 @@ namespace e_Demokratija
                 return;
             }
             Console.WriteLine("Ukupan broj registrovanih glasaca: " + glasaci.Count);
-
-            IspisStanjaGradonacelnika(glasaci, kandidati);
-            IspisStanjaNacelnika(glasaci, kandidati);
-            IspisStanjaVijecnika(glasaci, kandidati);
-            IspisStanjaStranke(stranke);
         }
     }
 }

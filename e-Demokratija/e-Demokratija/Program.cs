@@ -235,7 +235,7 @@ namespace e_Demokratija
                             Console.WriteLine("5 - Brisanje stranke\n");
                             Console.Write("Unesite odgovarajući broj za izbor: ");
                             unosSupervizora = Int32.Parse(Console.ReadLine());
-                            if(unosSupervizora == 1)
+                            if (unosSupervizora == 1)
                             {
                                 Kandidat kandidat = new Kandidat();
                                 Console.Write("\nUnesite ime: ");
@@ -272,7 +272,7 @@ namespace e_Demokratija
                                 while (true)
                                 {
                                     nazivStranke = Console.ReadLine();
-                                    if(supervizor.DaLiStrankaPostoji(stranke, nazivStranke))
+                                    if (supervizor.DaLiStrankaPostoji(stranke, nazivStranke))
                                     {
                                         break;
                                     }
@@ -419,7 +419,10 @@ namespace e_Demokratija
                     case 4:
                         Glas g = new Glas();
                         g.IspisStanja(glasaci, stranke, kandidati, glasovi);
-                        
+                        g.IspisStanjaGradonacelnika(glasaci, kandidati);
+                        g.IspisStanjaNacelnika(glasaci, kandidati);
+                        g.IspisStanjaVijecnika(glasaci, kandidati);
+                        g.IspisStanjaStranke(stranke);
                         Console.WriteLine("\nPritisnite bilo koju tipku za povratak na glavni izbornik.");
                         Console.ReadKey();
                         break;
