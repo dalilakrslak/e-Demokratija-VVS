@@ -109,5 +109,11 @@ namespace e_Demokratija
                 }
             }
         }
+        public bool DaLiImaGlas(IProvjera sigurnosnaProvjera)
+        {
+            if (!sigurnosnaProvjera.DaLiImaGlas(redniBroj))
+                return false;
+            return true;
+        }
     }
 }

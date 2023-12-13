@@ -9,5 +9,6 @@ namespace e_Demokratija
     public interface IProvjera
     {
         public bool DaLiJeVecGlasao(string IDBroj);
+        public bool DaLiImaGlas(int redniBroj);
     }
 }

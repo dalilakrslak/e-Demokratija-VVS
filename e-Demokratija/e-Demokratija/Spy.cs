@@ -9,6 +9,7 @@ namespace e_Demokratija
     public class Spy : IProvjera
     {
         public bool Glasao { get; set; }
+        public int Glasovi { get; set; }
         public bool DaLiJeVecGlasao(string IDBroj)
         {
             if (Glasao == true)
@@ -19,6 +20,14 @@ namespace e_Demokratija
             {
                 return false;
             }
+        }
+        public bool DaLiImaGlas(int redniBroj)
+        {
+            if (Glasovi == 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
