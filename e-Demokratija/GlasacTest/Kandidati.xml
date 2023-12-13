@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Kandidati>
+	<Kandidat>
+		<Ime>Niko</Ime>
+		<Prezime>Nikic</Prezime>
+	</Kandidat>
+	<Kandidat>
+		<Ime>Fiko</Ime>
+		<Prezime>Fikic</Prezime>
+	</Kandidat>
+	<Kandidat>
+		<Ime>Ciko</Ime>
+		<Prezime>Cikic</Prezime>
+	</Kandidat>
+</Kandidati>

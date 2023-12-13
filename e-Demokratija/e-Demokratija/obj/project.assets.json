@@ -424,19 +424,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\29\\.nuget\\packages\\": {}
+    "C:\\Users\\Vildana\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+      "projectUniqueName": "C:\\Users\\Vildana\\AppData\\Local\\GitHubDesktop\\Projekat\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
       "projectName": "e-Demokratija",
-      "projectPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
-      "packagesPath": "C:\\Users\\29\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\29\\Documents\\GitHub\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\obj\\",
+      "projectPath": "C:\\Users\\Vildana\\AppData\\Local\\GitHubDesktop\\Projekat\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+      "packagesPath": "C:\\Users\\Vildana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vildana\\AppData\\Local\\GitHubDesktop\\Projekat\\e-Demokratija\\e-Demokratija\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\29\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Vildana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -487,7 +487,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
