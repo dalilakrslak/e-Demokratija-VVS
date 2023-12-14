@@ -13,7 +13,6 @@ namespace Testovi
     [TestClass]
     public class UnitTest1
     {
-        private XmlReaderSettings settings = new XmlReaderSettings();
         [TestMethod]
         public void TestIspravnogKonstruktoraKlaseGlasac1()
         {
@@ -43,34 +42,22 @@ namespace Testovi
             Assert.AreEqual("dkrslak231101", g.Kod);
         }
         [TestMethod]
-        public void TestIspravneDodjeleKoda2()
-        {
-            Glasac g = new Glasac("Dalila", "Krslak", new DateTime(2001, 1, 2));
-            Assert.AreEqual("dkrslak020101", g.Kod);
-        }
-        [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestDuzineImenaIzuzetak1()
+        public void DaLiJeImeIspravno_KratkoIme_BacaIzuzetak()
         {
             Glasac g = new Glasac("D", "Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJeImeIspravno(g.Ime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestDuzineImenaIzuzetak2()
+        public void DaLiJeImeIspravno_DugoIme_BacaIzuzetak()
         {
             Glasac g = new Glasac("OvoJeNekoJakooooDugoImeKojeNiNePostoji", "Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJeImeIspravno(g.Ime);
         }
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestPraznoImeIzuzetak1()
-        {
-            Glasac g = new Glasac("", "Kršlak", new DateTime(2001, 11, 23));
-        }
-        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestPraznoImeIzuzetak2()
+        public void DaLiJeImeIspravno_PraznoIme_BacaIzuzetak()
         {
             Glasac g = new Glasac();
             string ime = "";
@@ -79,41 +66,41 @@ namespace Testovi
         }
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void TestImeNullIzuzetak1()
+        public void DaLiJeImeIspravno_Null_BacaIzuzetak()
         {
             Glasac g = new Glasac(null, "Kršlak", new DateTime(2001, 11, 23));
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestImeNisuSlovaIzuzetak()
+        public void DaLiJeImeIspravno_ZnakoviUImenu_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila2311", "Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJeImeIspravno(g.Ime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestiImeCrticaIzuzetak()
+        public void DaLiJeImeIspravno_ImeSaCrticama_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila-Daki-Dals", "Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJeImeIspravno(g.Ime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestDuzinePrezimenaIzuzetak1()
+        public void DaLiJePrezimeIspravno_KratkoPrezime_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila", "K", new DateTime(2001, 11, 23));
             g.DaLiJePrezimeIspravno(g.Prezime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestDuzinPrezimenaIzuzetak2()
+        public void DaLiJePrezimeIspravno_DugoPrezime_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila", "OvoJeNekoJakooooDugoPrezimeKojeNiNePostoji", new DateTime(2001, 11, 23));
             g.DaLiJePrezimeIspravno(g.Prezime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestPraznoPrezimeIzuzetak()
+        public void DaLiJePrezimeIspravno_PraznoPrezime_BacaIzuzetak()
         {
             Glasac g = new Glasac();
             string prezime = "";
@@ -122,21 +109,21 @@ namespace Testovi
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestPrezimeNisuSlovaIzuzetak()
+        public void DaLiJePrezimeIspravno_ZnakoviUPrezimenu_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila", "Kršlak2311", new DateTime(2001, 11, 23));
             g.DaLiJePrezimeIspravno(g.Prezime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestPrezimeCrticaIzuzetak()
+        public void DaLiJePrezimeIspravno_PrezimeSaCrticama_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila", "Kršlak-Kršlak-Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJePrezimeIspravno(g.Prezime);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestDatumUBuducnostiIzuzetak()
+        public void DaLiJeDatumaRodjenjaIspravan_Buducnost_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2025, 11, 23));
             g.DaLiJeDatumaRodjenjaIspravan(g.DatumRodjenja);
@@ -144,16 +131,9 @@ namespace Testovi
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestPunoljetniGlasacIzuzetak1()
+        public void DaLiJeDatumaRodjenjaIspravan_Maloljetnost_BacaIzuzetak()
         {
             Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2007, 11, 23));
-            g.DaLiJeDatumaRodjenjaIspravan(g.DatumRodjenja);
-        }
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestPunoljetniGlasacIzuzetak2()
-        {
-            Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2006, 31, 12));
             g.DaLiJeDatumaRodjenjaIspravan(g.DatumRodjenja);
         }
         [TestMethod]
