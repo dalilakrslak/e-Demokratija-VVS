@@ -185,5 +185,22 @@ namespace e_Demokratija
             }
             Console.WriteLine("Ukupan broj registrovanih glasaca: " + glasaci.Count);
         }
+        public void ResetGlasanjaZaVijecnika(Glasac glasac, List<Glas> glasovi, List<Kandidat> kandidati)
+        {
+            for (int i = 0; i < glasovi.Count; i++)
+            {
+                if (glasovi[i].Glasac.DaLiJeGlasaoZaVijecnika)
+                {
+                    for (int j = 0; j < kandidati.Count; j++)
+                    {
+                        if (kandidati[j].Pozicija == Pozicija.vijecnik && object.ReferenceEquals(kandidati[j], glasovi[i].Kandidat))
+                        {
+                            kandidati[j].BrojGlasova = kandidati[j].BrojGlasova - 1;
+                        }
+                    }
+                }
+            }
+        }
     }
+
 }
