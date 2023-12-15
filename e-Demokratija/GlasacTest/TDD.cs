@@ -92,5 +92,36 @@ namespace Testovi
 
             Assert.IsFalse(rezultat);
         }
+
+        [TestMethod]
+        public void DaLiJeOpisStrankeIspravan_NevalidanOpisPrazan_OcekivaniRezultatFalse()
+        {
+            Stranka stranka = new Stranka();
+            string opis = "";
+
+            bool rezultat = stranka.DaLiJeOpisStrankeIspravan(opis);
+
+            Assert.IsFalse(rezultat);
+        }
+        [TestMethod]
+        public void DaLiJeOpisStrankeIspravan_GodinaUBuducnosti_OcekivaniRezultatFalse()
+        {
+            Stranka stranka = new Stranka();
+            string opis = "Puni naziv stranke Ne-Ka Stranka je NekaStranka. NekaStranka je osnovana 2100. godine.";
+
+            bool result = stranka.DaLiJeOpisStrankeIspravan(opis);
+
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void DaLiJeOpisStrankeIspravan_NeispravnaGodina_OcekivaniRezultatFalse()
+        {
+            Stranka stranka = new Stranka();
+            string opis = "Puni naziv stranke Ne-Ka Stranka je NekaStranka. NekaStranka je osnovana 12345. godine.";
+
+            bool result = stranka.DaLiJeOpisStrankeIspravan(opis);
+
+            Assert.IsFalse(result);
+        }
     }
 }
