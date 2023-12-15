@@ -243,13 +243,13 @@ namespace Testovi
         // DDT TESTS
         [DynamicData(nameof(KandidatiXML))]
         [TestMethod]
-        public void TestKonstruktoraGlasacaXML(string ime, string prezime)
+        public void TestKonstruktoraKandidataXML(string ime, string prezime)
         {
             Kandidat kandidat = new Kandidat(ime, prezime, new DateTime(1987, 12, 12), Pozicija.gradonacelnik, "Opis kandidata broj jedan.", null);
         }
         [DynamicData(nameof(KandidatiCSV))]
         [TestMethod]
-        public void TestKonstruktoraGlasacaCSV(string ime, string prezime)
+        public void TestKonstruktoraKandidataCSV(string ime, string prezime)
         {
             Kandidat kandidat = new Kandidat(ime, prezime, new DateTime(1987, 12, 12), Pozicija.gradonacelnik, "Opis kandidata broj jedan.", null);
         }

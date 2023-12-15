@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using static Testovi.UnitTest2;
 
 namespace Testovi
 {
@@ -350,7 +349,7 @@ namespace Testovi
 
         [DynamicData(nameof(GlasCSV))]
         [TestMethod]
-        public void TestKonstruktoraSupervizoraCSV(string imeGlasaca, string prezimeGlasaca, string imeKandidata, string prezimeKandidata)
+        public void TestKonstruktoraGlasaCSV(string imeGlasaca, string prezimeGlasaca, string imeKandidata, string prezimeKandidata)
         {
             Glasac glasac = new Glasac(imeGlasaca, prezimeGlasaca, new DateTime(1979, 12, 27));
             Kandidat kandidat = new Kandidat(imeKandidata, prezimeKandidata, new DateTime(1966, 10, 15), Pozicija.gradonacelnik, "Ovo je opis", null);
