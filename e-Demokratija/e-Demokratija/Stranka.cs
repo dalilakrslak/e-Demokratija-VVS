@@ -45,5 +45,17 @@ namespace e_Demokratija
         {
             get => redniBroj;
         }
+        public bool DaLiJeOpisStrankeIspravan(string opis)
+        {
+            if (!opis.EndsWith("."))
+            {
+                return false;
+            }
+            else if (!opis.Contains("naziv stranke") || !opis.Contains("osnovana"))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
