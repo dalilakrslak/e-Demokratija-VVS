@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace e_Demokratija
@@ -47,11 +48,23 @@ namespace e_Demokratija
         }
         public bool DaLiJeOpisStrankeIspravan(string opis)
         {
-            if (!opis.EndsWith("."))
+            if (string.IsNullOrEmpty(opis))
+            {
+                return false;
+            }
+            else if (!opis.EndsWith("."))
             {
                 return false;
             }
             else if (!opis.Contains("naziv stranke") || !opis.Contains("osnovana"))
+            {
+                return false;
+            }
+            else if (!Regex.Match(opis, @"\b(\d{4})\b").Success)
+            {
+                return false;
+            }
+            else if (int.Parse(Regex.Match(opis, @"\b(\d{4})\b").Value) > DateTime.Now.Year)
             {
                 return false;
             }
