@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "GyrmyML1i4oOtZuydgsn1+fCqcKfCoC1SU4pUp2+RClJ1MYKcgrH3GcpWK0CNKio04+45nM8GGwTXM/QEXu3oA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Abdel Adilovic\\Desktop\\VVS\\e-Demokratija-VVS\\e-Demokratija\\e-Demokratija\\e-Demokratija.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\moq\\4.20.70\\moq.4.20.70.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\system.diagnostics.eventlog\\4.7.0\\system.diagnostics.eventlog.4.7.0.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\Abdel Adilovic\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
