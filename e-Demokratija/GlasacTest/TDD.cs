@@ -60,5 +60,37 @@ namespace Testovi
 
             Assert.AreEqual(originalniBrojGlasova, vijecnik.BrojGlasova);
         }
+        [TestMethod]
+        public void DaLiJeOpisStrankeIspravan_ValidanOpis_OcekivaniRezultatTrue()
+        {
+            Stranka stranka = new Stranka();
+            string opis = "Puni naziv stranke Ne-Ka Stranka je NekaStranka. NekaStranka je osnovana 2020. godine.";
+
+            bool rezultat = stranka.DaLiJeOpisStrankeIspravan(opis);
+
+            Assert.IsTrue(rezultat);
+        }
+
+        [TestMethod]
+        public void DaLiJeOpisStrankeIspravan_NevalidanOpisBezTacke_OcekivaniRezultatFalse()
+        {
+            Stranka stranka = new Stranka();
+            string opis = "Puni naziv stranke LosaStranka je LosaStranka je osnovana 2021 godine";
+
+            bool rezultat = stranka.DaLiJeOpisStrankeIspravan(opis);
+
+            Assert.IsFalse(rezultat);
+        }
+
+        [TestMethod]
+        public void DaLiJeOpisStrankeIspravan_NevalidanOpisSamoPola_OcekivaniRezultatFalse()
+        {
+            Stranka stranka = new Stranka();
+            string opis = "Ne-Ka Stranka je NekaStranka.";
+
+            bool rezultat = stranka.DaLiJeOpisStrankeIspravan(opis);
+
+            Assert.IsFalse(rezultat);
+        }
     }
 }
