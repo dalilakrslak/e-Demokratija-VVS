@@ -355,5 +355,103 @@ namespace Testovi
             Kandidat kandidat = new Kandidat(imeKandidata, prezimeKandidata, new DateTime(1966, 10, 15), Pozicija.gradonacelnik, "Ovo je opis", null);
             Glas g = new Glas(glasac, kandidat);
         }
+
+        //White box
+        [TestMethod]
+        public void TestIspisStanjaGradonacelnika_Put1()
+        {
+            var glas = new Glas();
+            var glasaci = new List<Glasac>();
+            var kandidati = new List<Kandidat>();
+            var ocekivaniIzlaz = new StringBuilder();
+            ocekivaniIzlaz.AppendLine("Glasanje za gradonacelnika: ");
+            ocekivaniIzlaz.AppendLine(" - Ukupan broj glasova: 0");
+            ocekivaniIzlaz.AppendLine(" - Prva tri mjesta: ");
+
+            var izlazKonzole = IspisKonzole(() => glas.IspisStanjaGradonacelnika(glasaci, kandidati));
+
+            StringAssert.Contains(izlazKonzole, ocekivaniIzlaz.ToString());
+        }
+
+        [TestMethod]
+        public void TestIspisStanjaGradonacelnika_Put3()
+        {
+            var glas = new Glas();
+            var glasaci = new List<Glasac>
+             {
+                 new Glasac { DaLiJeGlasaoZaGradonacelnika = true },
+                 new Glasac { DaLiJeGlasaoZaGradonacelnika = true },
+                    new Glasac { DaLiJeGlasaoZaGradonacelnika = true }
+             };
+
+            var kandidati = new List<Kandidat>
+             {
+                 new Kandidat { Pozicija = Pozicija.vijecnik, BrojGlasova = 5, Ime = "K1", Prezime = "Prezime1", Stranka = new Stranka { Naziv = "StrankaA" } },
+                 new Kandidat { Pozicija = Pozicija.nacelnik, BrojGlasova = 4, Ime = "K2", Prezime = "Prezime2", Stranka = new Stranka { Naziv = "StrankaA" } },
+                 new Kandidat { Pozicija = Pozicija.nacelnik, BrojGlasova = 3, Ime = "K3", Prezime = "Prezime3", Stranka = new Stranka { Naziv = "StrankaB" } }
+             };
+
+            var ocekivaniIzlaz = new StringBuilder();
+            ocekivaniIzlaz.AppendLine("Glasanje za gradonacelnika: ");
+            ocekivaniIzlaz.AppendLine(" - Ukupan broj glasova: 3");
+            ocekivaniIzlaz.AppendLine(" - Prva tri mjesta: ");
+
+            var izlazKonzole = IspisKonzole(() => glas.IspisStanjaGradonacelnika(glasaci, kandidati));
+
+            StringAssert.Contains(izlazKonzole, ocekivaniIzlaz.ToString());
+        }
+
+        [TestMethod]
+        public void TestIspisStanjaGradonacelnika_Put2()
+        {
+            var glas = new Glas();
+            var glasaci = new List<Glasac>
+            {
+                new Glasac { DaLiJeGlasaoZaGradonacelnika = true },
+                new Glasac { DaLiJeGlasaoZaGradonacelnika = true },
+                new Glasac { DaLiJeGlasaoZaGradonacelnika = true }
+            };
+
+            var kandidati = new List<Kandidat>
+            {
+                 new Kandidat { Pozicija = Pozicija.nacelnik, BrojGlasova = 3, Ime = "K3", Prezime = "Prezime3", Stranka = new Stranka { Naziv = "StrankaB" } }
+            };
+
+            var ocekivaniIzlaz = new StringBuilder();
+            ocekivaniIzlaz.AppendLine("Glasanje za gradonacelnika: ");
+            ocekivaniIzlaz.AppendLine(" - Ukupan broj glasova: 3");
+            ocekivaniIzlaz.AppendLine(" - Prva tri mjesta: ");
+
+            var izlazKonzole = IspisKonzole(() => glas.IspisStanjaGradonacelnika(glasaci, kandidati));
+
+            StringAssert.Contains(izlazKonzole, ocekivaniIzlaz.ToString());
+        }
+        [TestMethod]
+        public void TestIspisStanjaGradonacelnika_Put4()
+        {
+            var glas = new Glas();
+            var glasaci = new List<Glasac>
+            {
+                 new Glasac { DaLiJeGlasaoZaGradonacelnika = false },
+                 new Glasac { DaLiJeGlasaoZaGradonacelnika = false },
+                    new Glasac { DaLiJeGlasaoZaGradonacelnika = false }
+            };
+
+            var kandidati = new List<Kandidat>
+            {
+                 new Kandidat { Pozicija = Pozicija.gradonacelnik, BrojGlasova = 5, Ime = "K1", Prezime = "Prezime1", Stranka = new Stranka { Naziv = "StrankaA" } },
+                 new Kandidat { Pozicija = Pozicija.gradonacelnik, BrojGlasova = 5, Ime = "K1", Prezime = "Prezime1", Stranka = new Stranka { Naziv = "StrankaA" } },
+                 new Kandidat { Pozicija = Pozicija.gradonacelnik, BrojGlasova = 4, Ime = "K2", Prezime = "Prezime2", Stranka = new Stranka { Naziv = "StrankaA" } }
+            };
+
+            var ocekivaniIzlaz = new StringBuilder();
+            ocekivaniIzlaz.AppendLine("Glasanje za gradonacelnika: ");
+            ocekivaniIzlaz.AppendLine(" - Ukupan broj glasova: 0");
+            ocekivaniIzlaz.AppendLine(" - Prva tri mjesta: ");
+
+            var izlazKonzole = IspisKonzole(() => glas.IspisStanjaGradonacelnika(glasaci, kandidati));
+
+            StringAssert.Contains(izlazKonzole, ocekivaniIzlaz.ToString());
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Testovi
         public void TestIspravnogKonstruktoraKlaseGlasac1()
         {
             Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2001, 11, 23));
-            g.DaLiJeImeIspravno(g.Ime);
+            //g.DaLiJeImeIspravno(g.Ime);
             g.DaLiJePrezimeIspravno(g.Prezime);
             g.DaLiJeDatumaRodjenjaIspravan(g.DatumRodjenja);
             Assert.AreEqual("Dalila", g.Ime);
@@ -53,6 +53,13 @@ namespace Testovi
         public void DaLiJeImeIspravno_DugoIme_BacaIzuzetak()
         {
             Glasac g = new Glasac("OvoJeNekoJakooooDugoImeKojeNiNePostoji", "Kršlak", new DateTime(2001, 11, 23));
+            g.DaLiJeImeIspravno(g.Ime);
+        }
+        //sljedeci test dodan za white box
+        [TestMethod]
+        public void DaLiJeImeIspravno_Ime_NemaIzuzetka()
+        {
+            Glasac g = new Glasac("Dalila", "Kršlak", new DateTime(2001, 11, 23));
             g.DaLiJeImeIspravno(g.Ime);
         }
         [TestMethod]
